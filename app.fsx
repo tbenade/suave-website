@@ -20,14 +20,17 @@ open Suave.Http.RequestErrors
 open Suave.Web             // for config
 open Suave.Types
 open Suave.Log
+open Suave.Logging
 open Suave.Http.Files             
 
 printfn "initializing script..."
 
+let logger = Loggers.saneDefaultsFor Logging.LogLevel.Verbose
+
 let config = 
     let port = System.Environment.GetEnvironmentVariable("PORT")
     { defaultConfig with 
-        logger = Logging.Loggers.saneDefaultsFor Logging.LogLevel.Verbose
+        logger = logger
         bindings=[ (if port = null then HttpBinding.mk' HTTP  "127.0.0.1" 8080
                     else HttpBinding.mk' HTTP  "0.0.0.0" (int32 port)) ] }
 
