@@ -15,16 +15,25 @@ open Suave                 // always open suave
 open Suave.Http
 open Suave.Http.Applicatives
 open Suave.Http.Successful // for OK-result
+open Suave.Http.ServerErrors
 open Suave.Web             // for config
-open Suave.Types             
+open Suave.Types
+open Suave.Log
+open Suave.Files             
 
 printfn "initializing script..."
+
+let config = 
+    let port = System.Environment.GetEnvironmentVariable("PORT")
+    { defaultConfig with 
+        logger = Logging.Loggers.saneDefaultsFor Logging.LogLevel.Verbose
+        bindings=[ (if port = null then HttpBinding.mk' HTTP  "127.0.0.1" 8080
 
 let app : WebPart = 
     choose [
        log logger log_format >>= never;
        url_regex "(.*?)\.(dll|mdb|log)$" >>= FORBIDDEN "Access denied.";
-       GET >>= choose [ url "/" >>= file "index.html"; browse ];
+       GET >>= choose [ path "/" >>= file "index.html"; browseHome ];
        NOT_FOUND "Found no handlers." 
     ]
     
