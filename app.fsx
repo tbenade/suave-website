@@ -28,7 +28,8 @@ let logger = Loggers.saneDefaultsFor LogLevel.Verbose
 
 let config = 
     let port = System.Environment.GetEnvironmentVariable("PORT")
-    { defaultConfig with 
+    { defaultConfig with
+        homeFolder = Some __SOURCE_DIRECTORY__
         logger = logger
         bindings=[ (if port = null then HttpBinding.mk' HTTP  "127.0.0.1" 8080
                     else HttpBinding.mk' HTTP  "0.0.0.0" (int32 port)) ] }
