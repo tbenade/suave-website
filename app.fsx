@@ -25,7 +25,7 @@ open Suave.Http.Files
 
 printfn "initializing script..."
 
-let logger = Loggers.saneDefaultsFor Logging.LogLevel.Verbose
+let logger = Loggers.saneDefaultsFor LogLevel.Verbose
 
 let config = 
     let port = System.Environment.GetEnvironmentVariable("PORT")
@@ -39,7 +39,7 @@ let app : WebPart =
        pathRegex "(.*?)\.(dll|mdb|log)$" >>= FORBIDDEN "Access denied.";
        GET >>= choose [ path "/" >>= file "index.html"; browseHome ];
        NOT_FOUND "Found no handlers." 
-    ] >>= log logger log_format
+    ] >>= log logger logFormat
     
 
 startWebServer config app
