@@ -33,11 +33,10 @@ let config =
 
 let app : WebPart = 
     choose [
-       log logger log_format >>= never;
-       url_regex "(.*?)\.(dll|mdb|log)$" >>= FORBIDDEN "Access denied.";
+       pathRegex "(.*?)\.(dll|mdb|log)$" >>= FORBIDDEN "Access denied.";
        GET >>= choose [ path "/" >>= file "index.html"; browseHome ];
        NOT_FOUND "Found no handlers." 
-    ]
+    ] >>= log logger log_format
     
 
 startWebServer config app
