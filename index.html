@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Suave : Suave is a simple web development F# library providing a lightweight web server and a set of combinators to manipulate route flow and task composition." />
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Suave.IO</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+
+        <div class="inner">
+         
+          <div id="logo" >
+            <img src="images/logo.gif" border="0" alt="Suave.IO">
+          </div>
+
+
+          <h2 id="project_tagline">Suave is a simple web development F# library providing a lightweight web server and a set of combinators to manipulate route flow and task composition.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/SuaveIO/suave/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/SuaveIO/suave/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+
+          <a id="forkme_banner" href="https://github.com/SuaveIO/suave">View on GitHub</a>
+          
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="introduction">Introduction</h1>
+
+<p>Suave is a lightweight, non-blocking web server. The non-blocking I/O model is efficient and suitable for building fast, scalable network applications. In fact, Suave is written in a <strong>completely non-blocking</strong> fashion throughout. Suave <strong>runs on Linux</strong>, OS X and Windows flawlessly.</p>
+
+<p>Suave is inspired in the simplicity of Happstack and born out of the necessity
+of embedding web server capabilities in my own applications. Still in its early
+stages Suave supports HTTPS, multiple TCP/IP bindings, Basic Access
+Authentication, Keep-Alive and HTTP compression.</p>
+
+<h2 id="nuget">NuGet</h2>
+
+<p>To install Suave, run the following command in the
+<a href="http://docs.nuget.org/docs/start-here/using-the-package-manager-console">Package Manager Console</a></p>
+
+<div class="highlight"><pre><code class="language-dosbatch" data-lang="dosbatch">PM<span class="p">&gt;</span> <span class="n">Install</span>-Package Suave</code></pre></div>
+
+<p>Or with <a href="https://github.com/fsprojects/Paket">Paket</a> in paket.dependencies:</p>
+
+<div class="highlight"><pre><code class="language-dosbatch" data-lang="dosbatch">source https:<span class="n">//nuget.org/api/v2</span>
+nuget Suave <span class="m">0</span>.<span class="m">16</span>.<span class="m">0</span></code></pre></div>
+
+<h2 id="the-simplest-possible-application-hello-world">The simplest possible application: Hello World!</h2>
+
+<p>The simplest Suave application is a simple HTTP server that greets all visitors
+with the string <code>"Hello World!"</code></p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">open</span> <span class="nn">Suave</span>                 <span class="c1">// always open suave</span>
+<span class="k">open</span> <span class="nn">Suave.Http.Successful</span> <span class="c1">// for OK-result</span>
+<span class="k">open</span> <span class="nn">Suave.Web</span>             <span class="c1">// for config</span>
+
+<span class="n">startWebServer</span> <span class="n">defaultConfig</span> <span class="o">(</span><span class="n">OK</span> <span class="s">&quot;Hello World!&quot;</span><span class="o">)</span></code></pre></div>
+
+<p>The above statement will start a web server on default port 8083 over HTTP.
+<code>startWebServer</code> takes a configuration record and the WebPart <code>(OK "Hello World")</code>
+It’s worth noting that with the above, your application will block on the
+function call, until you cancel the <code>Async.DefaultCancellationToken</code>. If you
+want to handle disposal of the async yourself, have a look at
+<code>startWebServerAsync</code>.</p>
+
+<p>In suave, we have opted to write a lot of documentation inside the code; so just
+hover the function in your IDE or use an assembly browser to bring out the XML
+docs. </p>
+
+<h2 id="suave--paket--">Suave + Paket = ♥</h2>
+<p>Working fully self-contained getting-started example for Suave Web Server
+scripting</p>
+
+<p>Note you don’t need to have <em>anything</em> installed before starting with this
+script. Nothing but F# Interactive and this script.</p>
+
+<p>This script fetches the Paket.exe component which is referenced later in the
+script. Initially the #r “paket.exe” reference is shown as unresolved. Once it
+has been downloaded by the user (by executing the first part of the script) the
+reference shows as resolved and can be used.</p>
+
+<p>Paket is then used to fetch a set of F# packages, which are then used later in
+the script.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="c1">// Step 0. Boilerplate to get the paket.exe tool</span>
+ 
+<span class="k">open</span> <span class="nn">System</span>
+<span class="k">open</span> <span class="nn">System.IO</span>
+ 
+<span class="nn">Environment</span><span class="p">.</span><span class="n">CurrentDirectory</span> <span class="o">&lt;-</span> <span class="o">__</span><span class="n">SOURCE_DIRECTORY__</span>
+ 
+<span class="k">if</span> <span class="ow">not</span> <span class="o">(</span><span class="nn">File</span><span class="p">.</span><span class="n">Exists</span> <span class="s">&quot;paket.exe&quot;</span><span class="o">)</span> <span class="k">then</span>
+    <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="s">&quot;https://github.com/fsprojects/Paket/releases/download/0.31.5/paket.exe&quot;</span>
+    <span class="k">use</span> <span class="n">wc</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="bp">()</span>
+    <span class="k">let</span> <span class="nv">tmp</span> <span class="o">=</span> <span class="nn">Path</span><span class="p">.</span><span class="n">GetTempFileName</span><span class="bp">()</span>
+    <span class="n">wc</span><span class="o">.</span><span class="n">DownloadFile</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">tmp</span><span class="o">)</span>
+    <span class="nn">File</span><span class="p">.</span><span class="n">Move</span><span class="o">(</span><span class="n">tmp</span><span class="o">,</span><span class="nn">Path</span><span class="p">.</span><span class="n">GetFileName</span> <span class="n">url</span><span class="o">)</span>
+ 
+<span class="c1">// Step 1. Resolve and install the packages</span>
+ 
+<span class="o">#</span><span class="n">r</span> <span class="s">&quot;paket.exe&quot;</span>
+ 
+<span class="nn">Paket</span><span class="p">.</span><span class="nn">Dependencies</span><span class="p">.</span><span class="n">Install</span> <span class="s">&quot;&quot;&quot;</span>
+<span class="s">source https://nuget.org/api/v2</span>
+<span class="s">nuget Suave</span>
+<span class="s">nuget FSharp.Data</span>
+<span class="s">nuget FSharp.Charting</span>
+<span class="s">&quot;&quot;&quot;</span><span class="o">;;</span>
+ 
+<span class="c1">// Step 2. Use the packages</span>
+ 
+<span class="o">#</span><span class="n">r</span> <span class="s">&quot;packages/Suave/lib/net40/Suave.dll&quot;</span>
+<span class="o">#</span><span class="n">r</span> <span class="s">&quot;packages/FSharp.Data/lib/net40/FSharp.Data.dll&quot;</span>
+<span class="o">#</span><span class="n">r</span> <span class="s">&quot;packages/FSharp.Charting/lib/net40/FSharp.Charting.dll&quot;</span>
+ 
+<span class="k">let</span> <span class="nv">ctxt</span> <span class="o">=</span> <span class="nn">FSharp</span><span class="p">.</span><span class="nn">Data</span><span class="p">.</span><span class="nn">WorldBankData</span><span class="p">.</span><span class="n">GetDataContext</span><span class="bp">()</span>
+ 
+<span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="n">ctxt</span><span class="o">.</span><span class="n">Countries</span><span class="o">.</span><span class="n">Algeria</span><span class="o">.</span><span class="n">Indicators</span><span class="o">.``</span><span class="n">GDP</span> <span class="o">(</span><span class="n">current</span> <span class="n">US</span><span class="o">$)``</span>
+ 
+<span class="k">open</span> <span class="nn">Suave</span> <span class="c1">// always open suave</span>
+<span class="k">open</span> <span class="nn">Suave.Http.Successful</span> <span class="c1">// for OK-result</span>
+<span class="k">open</span> <span class="nn">Suave.Web</span> <span class="c1">// for config</span>
+ 
+<span class="n">startWebServer</span> <span class="n">defaultConfig</span> <span class="o">(</span><span class="n">OK</span> <span class="o">(</span><span class="n">sprintf</span> <span class="s">&quot;Hello World! In 2010 Algeria earned %f &quot;</span> <span class="n">data</span><span class="o">.[</span><span class="mi">2010</span><span class="o">]))</span></code></pre></div>
+
+<h2 id="a-slightly-more-complex-example-routing-http-requests">A slightly more complex example: routing HTTP requests</h2>
+
+<p>Most .NET web frameworks are based on the object-oriented paradigm. This means that you have a class called something like CheesesController or CheesesModule. The methods in that class are then associated with url routes, with the most common routing methods being convention based, attribute-based (e.g. adding attributes like <code>[Route("cheeses/{cheeseId}/taste")]</code> and <code>[HttpGet]</code>) or some sort of global routing table.</p>
+
+<p>Suave is designed to fit in with F#’s functional programming paradigm, so routing does not use any of these routing methods. Instead routing takes place using a single function, itself composed from many smaller functions. This function has the signature <code>WebPart</code>:</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">type</span> <span class="nc">SuaveTask</span><span class="o">&lt;</span><span class="k">&#39;</span><span class="n">a</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">Async</span><span class="o">&lt;</span><span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span><span class="o">&gt;</span>
+<span class="k">type</span> <span class="nc">WebPart</span> <span class="o">=</span> <span class="n">HttpContext</span> <span class="o">-&gt;</span> <span class="n">SuaveTask</span><span class="o">&lt;</span><span class="n">HttpContext</span><span class="o">&gt;</span>
+<span class="c1">// hence: WebPart = HttpContext -&gt; Async&lt;HttpContext option&gt;</span></code></pre></div>
+
+<p>This function has a single parameter of type <code>HttpContext</code>. This is an F# record type that includes the HTTP request, the HTTP response, and a few other things. This should be pretty familiar to anyone who has done any web programming before.</p>
+
+<p>A WebPart function returns an asynchronous workflow which itself ultimately returns an <code>HttpContext option</code>. Asynchronous workflows are hopefully already somewhat familiar. The <code>HttpContext option</code> returned by the asynchronous workflow is either <code>Some HttpContext</code> record or <code>None</code>, and it is the option that is used to determine routing. Here is a web server with some simple routing logic. You can ignore the <code>&gt;&gt;=</code> operator and the exact workings of <code>choose</code> for now (both are explained in more detail later), just focus on the tree-like structure of the code:</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">open</span> <span class="nn">Suave</span>
+<span class="k">open</span> <span class="nn">Suave.Http</span>
+<span class="k">open</span> <span class="nn">Suave.Http.Applicatives</span>
+<span class="k">open</span> <span class="nn">Suave.Http.Successful</span>
+<span class="k">open</span> <span class="nn">Suave.Web</span>
+
+<span class="k">let</span> <span class="nv">app</span> <span class="o">=</span>
+  <span class="n">choose</span>
+    <span class="o">[</span> <span class="n">GET</span> <span class="o">&gt;&gt;=</span> <span class="n">choose</span>
+        <span class="o">[</span> <span class="n">path</span> <span class="s">&quot;/hello&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">OK</span> <span class="s">&quot;Hello GET&quot;</span>
+          <span class="n">path</span> <span class="s">&quot;/goodbye&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">OK</span> <span class="s">&quot;Good bye GET&quot;</span> <span class="o">]</span>
+      <span class="n">POST</span> <span class="o">&gt;&gt;=</span> <span class="n">choose</span>
+        <span class="o">[</span> <span class="n">path</span> <span class="s">&quot;/hello&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">OK</span> <span class="s">&quot;Hello POST&quot;</span>
+          <span class="n">path</span> <span class="s">&quot;/goodbye&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">OK</span> <span class="s">&quot;Good bye POST&quot;</span> <span class="o">]</span> <span class="o">]</span>
+
+<span class="n">startWebServer</span> <span class="n">defaultConfig</span> <span class="n">app</span></code></pre></div>
+
+<p>By using <code>choose</code> we execute different logic depending on whether the request was a GET or a POST, and depending on whether the url was /hello or /goodbye. If a request matches a given path in the decision tree, <code>choose</code> will return <code>Some HttpContext</code>, if it doesn’t, <code>choose</code> will return <code>None</code>. The end result is that when someone makes a request the server will walk down this tree looking for the first part that returns <code>Some HttpContext</code>, and then return it to the client. If no part of the tree returns <code>Some HttpContext</code> then the result is an exception. You can can also add a default route which returns a 404 page.</p>
+
+<p>The server won’t evalute the entire data structure for every request, only the actual decisions, so there is no need to be concerned about performance.</p>
+
+<h2 id="async-computation-expressions-and-">Async computation expressions and »=</h2>
+
+<p>Suave WebParts use F# async computation expressions. For example you could write:</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">let</span> <span class="nv">sleep</span> <span class="n">milliseconds</span> <span class="n">message</span><span class="o">:</span> <span class="n">WebPart</span> <span class="o">=</span>
+  <span class="k">fun</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpContext</span><span class="o">)</span> <span class="o">-&gt;</span>
+    <span class="n">async</span> <span class="o">{</span>
+      <span class="k">do</span><span class="o">!</span> <span class="nn">Async</span><span class="p">.</span><span class="n">Sleep</span> <span class="n">milliseconds</span>
+      <span class="k">return</span><span class="o">!</span> <span class="n">OK</span> <span class="n">message</span> <span class="n">x</span>
+    <span class="o">}</span></code></pre></div>
+
+<p>Async computation expressions are built into the F# language as a way of chaining asynchronous functions together. As well as <code>do!</code> and <code>return!</code> you can use <code>let!</code> to wait for another async function to return and then assign the result to a variable. For instance, <code>let! result = anotherAsyncWorkflow</code>. Behind the scenes “let!” is just syntactic sugar for calling the method <code>builder.Bind</code> on a computation builder.</p>
+
+<p>F# lets you define your own custom computation expressions with their own implementation of <code>Bind</code>, but instead of defining a custom computation builder with its own implementation of <code>Bind</code> Suave chooses to define the <code>&gt;&gt;=</code> operator. This is the standard operator for the <code>bind</code> operation in some other languages. So <code>&gt;&gt;=</code> chains asynchronous expressions in almost the same way as <code>let!</code>, except the expressions are not of type <code>Async&lt;'b&gt;</code> and <code>Async&lt;'c&gt;</code>, but rather <code>Async&lt;'b option&gt;</code> and <code>Async&lt;'c option&gt;</code>. That is to say, <code>&gt;&gt;=</code>
+chains together Async options rather than just vanilla Async computations. If the result of the first of the two chained workflows is <code>None</code>, then the computation is short-circuited and the second computation is never run. If the first computation returns <code>Some x</code>, then <code>&gt;&gt;=</code> behaves in much the same way as <code>let!</code>: the result of running the expression on the left is passed into the expression on the right.</p>
+
+<p>If you hear someone use the “M” word, they are referring to code that uses the <code>&gt;&gt;=</code> operator.</p>
+
+<p>There is a good tutorial on using the <code>&gt;&gt;=</code> operator to short circuit a series of operations here: <a href="http://fsharpforfunandprofit.com/posts/recipe-part2/">Railway oriented programming</a></p>
+
+<p>There is also a good tutorial on computation expressions by the same author: <a href="http://fsharpforfunandprofit.com/posts/computation-expressions-intro/">Computation expressions: Introduction</a></p>
+
+<h2 id="composing-bigger-programs-combinators">Composing bigger programs: combinators</h2>
+
+<p>Defining the entire logic of your program in a single giant function called app would clearly be impossible. Functional programming is all about composing functions from several smaller functions, and both F# and Suave offer various tools to make this easy.</p>
+
+<p>In functional programming parlance, a “combinator” either combines several things of the same type into another thing of the same type, or otherwise takes a value and returns a new, modified version of that value. In mathematics it has a slightly different meaning, but we need not worry about this. In the case of Suave, there are two types of combinator:</p>
+
+<ul>
+  <li>Combinators which combine multiple <code>WebPart</code> into a single <code>WebPart</code>.</li>
+  <li>Combinators that produce <code>WebPart</code> from more primitive values. Recall that <code>WebPart</code> has the type <code>HttpContext -&gt; Async&lt;HttpContext option&gt;</code>. These combinators therefore always take a single HttpContext and produce a new HttpContext, wrapped inside an async option workflow.</li>
+</ul>
+
+<p>Together these are used to create web parts, combine them to produce new webparts, and ultimately combine them all into a single webpart passed as an argument used to initialise the web server.</p>
+
+<p>We have already seen several examples of combinators. The <code>choose</code> function seen above takes a list of <code>WebPart</code>, and combines them all into a single new <code>WebPart</code>:</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">val</span> <span class="n">choose</span> <span class="o">:</span> <span class="o">(</span><span class="n">options</span> <span class="o">:</span> <span class="n">WebPart</span> <span class="kt">list</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">WebPart</span></code></pre></div>
+
+<p>The <code>choose</code> combinator is implemented such that it will execute each webpart in the list until one returns success.</p>
+
+<p><code>&gt;&gt;=</code> is also a combinator, one that combines exactly two web parts. It runs the first, waits for it to finish, and then either passes the result into the second part, or short circuits if the first part returns <code>None</code>.</p>
+
+<p><code>OK</code> is a combinator of the second type. It always succeeds and writes its argument to the underlying response stream. It has type <code>string -&gt; WebPart</code>.</p>
+
+<p>To gain access to the underlying <code>HttpRequest</code> and read query and http form data we can use the <code>request</code> combinator (the <code>^^</code> custom operator is shorthand for searching a list of key-value option pairs and returning the value (or None if not found)):</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">let</span> <span class="nv">greetings</span> <span class="n">q</span> <span class="o">=</span>
+  <span class="n">defaultArg</span> <span class="o">(</span><span class="n">q</span> <span class="o">^^</span> <span class="s">&quot;name&quot;</span><span class="o">)</span> <span class="s">&quot;World&quot;</span> <span class="o">|&gt;</span> <span class="n">sprintf</span> <span class="s">&quot;Hello %s&quot;</span>
+
+<span class="k">let</span> <span class="nv">sample</span> <span class="o">:</span> <span class="n">WebPart</span> <span class="o">=</span> 
+    <span class="n">path</span> <span class="s">&quot;/hello&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">choose</span> <span class="o">[</span>
+      <span class="n">GET</span>  <span class="o">&gt;&gt;=</span> <span class="n">request</span><span class="o">(</span><span class="k">fun</span> <span class="n">r</span> <span class="o">-&gt;</span> <span class="n">OK</span> <span class="o">&lt;|</span> <span class="n">greetings</span> <span class="o">(</span><span class="n">query</span> <span class="n">r</span><span class="o">))</span>
+      <span class="n">POST</span> <span class="o">&gt;&gt;=</span> <span class="n">request</span><span class="o">(</span><span class="k">fun</span> <span class="n">r</span> <span class="o">-&gt;</span> <span class="n">OK</span> <span class="o">&lt;|</span> <span class="n">greetings</span> <span class="o">(</span><span class="n">form</span> <span class="n">r</span><span class="o">))</span>
+      <span class="n">NOT_FOUND</span> <span class="s">&quot;Found no handlers&quot;</span> <span class="o">]</span></code></pre></div>
+
+<p>You can similarly use <code>context</code> to gain access to the full <code>HttpContext</code> and connection.</p>
+
+<p>To protect a route with HTTP Basic Authentication the combinator <code>authenticateBasic</code> is used like in the following example.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">let</span> <span class="nv">requiresAuthentication</span> <span class="o">_</span> <span class="o">=</span>
+  <span class="n">choose</span>
+    <span class="o">[</span> <span class="n">GET</span> <span class="o">&gt;&gt;=</span> <span class="n">path</span> <span class="s">&quot;/public&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">OK</span> <span class="s">&quot;Hello anonymous&quot;</span>
+      <span class="c1">// access to handlers after this one will require authentication</span>
+      <span class="n">authenticateBasic</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">user</span><span class="o">,</span> <span class="n">pass</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">user</span> <span class="o">=</span> <span class="s">&quot;foo&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">pass</span> <span class="o">=</span> <span class="s">&quot;bar&quot;</span><span class="o">)</span>
+      <span class="n">GET</span> <span class="o">&gt;&gt;=</span> <span class="n">path</span> <span class="s">&quot;/protected&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">context</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">OK</span> <span class="o">(</span><span class="s">&quot;Hello &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">userState</span><span class="o">.[</span><span class="s">&quot;userName&quot;</span><span class="o">]))</span> <span class="o">]</span></code></pre></div>
+
+<p>Your web parts are “values” in the sense that they evaluate
+once, e.g. when constructing <code>choose [ OK "hi" ]</code>, <code>OK "hi"</code> is evaluated once,
+not every request. You need to wrap your web part in a closure if you want to
+re-evaluated every request, with <code>Suave.Http.warbler</code>, <code>Suave.Types.context</code> or
+<code>Suave.Types.request</code>.</p>
+
+<p><code>warbler : (f : 'a -&gt; 'a -&gt; 'b) -&gt; 'a -&gt; 'b</code> - a piece of the applicatives
+puzzle, which allows you to act on the <code>'a</code> argument and return a function that
+‘is the same’ as after your acting on it. Using this is very useful for control
+flow, because you can then inspect <code>HttpContext</code> and choose what applicative
+function to return.</p>
+
+<p><code>context</code>: basically the same as warbler.</p>
+
+<p><code>request</code>: basically the same as context, but only looks at the request - allows
+you to cut down on the pattern matching of HttpContext a bit: but you have to
+return an applicative that is a WebPart (i.e. something that isn’t from
+HttpRequest to something else, but from HttpContext to async http context
+option).</p>
+
+<h2 id="more-applicatives-and-http-combinators">More Applicatives and HTTP combinators</h2>
+
+<p>The documentation for applicates is written in
+<a href="https://github.com/SuaveIO/suave/blob/master/src/Suave/Http.fsi">Http.fsi</a> - so
+it’s recommended you explore the module using the code-completion of your IDE,
+or by looking at the linked file.</p>
+
+<p>All-in-all, the Http module consists of these sub-modules:</p>
+
+<dl>
+<dt>Codes</dt>
+<dd>simply hosts the HttpCode type.</dd>
+<dt>Internals</dt>
+<dd>constants and version of suave library.</dd>
+<dt>Compression</dt>
+<dd>Functions for compressing responses.</dd>
+<dt>Response</dt>
+<dd>response and response_f functions.</dd>
+<dt>Writers</dt>
+<dd>ways to modify the response.</dd>
+<dt>Intermediate - </dt>
+<dd>100 and 101 response codes.</dd>
+<dt>Successful</dt>
+<dd>2xx response codes.</dd>
+<dt>Redirection</dt>
+<dd>3xx response codes.</dd>
+<dt>RequestErrors - </dt>
+<dd>4xx response codes.</dd>
+<dt>ServerErrors</dt>
+<dd>5xx response codes.</dd>
+<dt>Applicatives</dt>
+<dd>use to filter down the request to something you</dd>
+<dt>Files</dt>
+<dd>send files to the client</dd>
+<dt>Authentication</dt>
+<dd>Methods for authenticating http requests</dd>
+</dl>
+
+<p>If you can get the FSFormatting project to work, we would appreciate a PR with
+generated documentation from the Http module as we’ve literally transcribed the
+RFC that documents all HTTP result codes, into this file.</p>
+
+<p>The numeric/discriminated-union HTTP codes can be found in <code>Suave.Types.Codes</code>.</p>
+
+<h2 id="programming-with-fish-custom-operator-reference">Programming with fish (custom operator reference)</h2>
+
+<p>Functional programming tends to involve custom operators. An excessive number of custom operators makes for cryptic, illegible code, but a few well chosen ones allow logic to be more succint and readable. We have already seen <code>&gt;&gt;=</code>, and happily suave does not use either &gt;«<em>&gt; or &lt;</em>)))&gt;{</p>
+
+<p>The other custom operators it declares are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&gt;=&gt;</td>
+      <td>Left-to-right Kleisli composition of monads, see Http.fsi</td>
+    </tr>
+    <tr>
+      <td>&lt;|&gt;</td>
+      <td>Left-to-right Kleisli composition of web parts, see Http.fsi</td>
+    </tr>
+    <tr>
+      <td>?</td>
+      <td>Try find a value by key in a dictionary</td>
+    </tr>
+    <tr>
+      <td>%%</td>
+      <td>Search a list of key-value pairs and return the value (or None if not found)</td>
+    </tr>
+    <tr>
+      <td>^^</td>
+      <td>Search a list of key-value option pairs and return the value (or None if not found)</td>
+    </tr>
+    <tr>
+      <td>?&lt;-</td>
+      <td>Assign a value to the key in the dictionary</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="typed-routes">Typed routes</h2>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">let</span> <span class="nv">testapp</span> <span class="o">:</span> <span class="n">WebPart</span> <span class="o">=</span>
+  <span class="n">choose</span>
+    <span class="o">[</span> <span class="n">urlScan</span> <span class="s">&quot;/add/%d/%d&quot;</span> <span class="o">(</span><span class="k">fun</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">OK</span><span class="o">((</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">).</span><span class="n">ToString</span><span class="bp">()</span><span class="o">))</span>
+      <span class="n">NOT_FOUND</span> <span class="s">&quot;Found no handlers&quot;</span> <span class="o">]</span></code></pre></div>
+
+<h2 id="multiple-bindings-and-ssl-support">Multiple bindings and SSL support</h2>
+
+<p>Suave supports binding the application to multiple TCP/IP addresses and ports
+combinations. It also supports HTTPS via the interface <code>ITlsProvider</code>.</p>
+
+<p>There is an OpenSSL implementation at <a href="https://github.com/SuaveIO/suave/tree/master/suave.OpenSsl">https://github.com/SuaveIO/suave/tree/master/suave.OpenSsl</a></p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">open</span> <span class="nn">Suave.OpenSsl.Provider</span>
+
+<span class="k">let</span> <span class="nv">sslCert</span> <span class="o">=</span> <span class="k">new</span> <span class="n">X509Certificate</span><span class="o">(</span><span class="s">&quot;suave.pfx&quot;</span><span class="o">,</span><span class="s">&quot;easy&quot;</span><span class="o">);</span>
+<span class="k">let</span> <span class="nv">cfg</span> <span class="o">=</span>
+  <span class="o">{</span> <span class="n">defaultConfig</span> <span class="k">with</span>
+      <span class="n">bindings</span> <span class="o">=</span>
+        <span class="o">[</span> <span class="nn">HttpBinding</span><span class="p">.</span><span class="n">mk</span> <span class="n">HTTP</span> <span class="nn">IPAddress</span><span class="p">.</span><span class="n">Loopback</span> <span class="mi">80us</span>
+          <span class="nn">HttpBinding</span><span class="p">.</span><span class="n">mk</span> <span class="o">(</span><span class="n">HTTPS</span> <span class="o">(</span><span class="n">openSsl</span> <span class="n">sslCert</span><span class="o">))</span> <span class="o">(</span><span class="nn">IPAddress</span><span class="p">.</span><span class="n">Parse</span> <span class="s">&quot;0.0.0.0&quot;</span><span class="o">)</span> <span class="mi">443us</span>
+        <span class="o">]</span>
+      <span class="n">timeout</span> <span class="o">=</span> <span class="nn">TimeSpan</span><span class="p">.</span><span class="n">FromMilliseconds</span> <span class="mi">3000</span><span class="o">.</span> <span class="o">}</span>
+<span class="n">choose</span>
+  <span class="o">[</span> <span class="n">path</span> <span class="s">&quot;/hello&quot;</span> <span class="o">&gt;&gt;=</span> <span class="n">OK</span> <span class="s">&quot;Hello World&quot;</span>
+    <span class="n">NOT_FOUND</span> <span class="s">&quot;Found no handlers&quot;</span> <span class="o">]</span>
+<span class="o">|&gt;</span> <span class="n">startWebServer</span> <span class="n">cfg</span></code></pre></div>
+
+<p>The OpenSSL implementation comes with conditional bindings in
+App.config for the three operating systems: linux, OS X and Windows.</p>
+
+<p><strong>Note</strong> – currently the compiled versions are “gott och blandat” as we say in
+Swedish. It means some are compiled for x86 (Windows) and some x64 (Linux, OS
+X); check out <a href="https://github.com/SuaveIO/suave/issues/42">issue 42</a> to see more
+about this issue.</p>
+
+<h1 id="api">API</h1>
+
+<h2 id="httpcontext">HttpContext</h2>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">type</span> <span class="nc">ErrorHandler</span> <span class="o">=</span> <span class="n">Exception</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">-&gt;</span> <span class="n">HttpContext</span> <span class="o">-&gt;</span> <span class="n">HttpContext</span>
+
+<span class="ow">and</span> <span class="n">HttpRuntime</span> <span class="o">=</span>
+  <span class="o">{</span> <span class="n">protocol</span>          <span class="o">:</span> <span class="n">Protocol</span>
+    <span class="n">errorHandler</span>      <span class="o">:</span> <span class="n">ErrorHandler</span>
+    <span class="n">mimeTypesMap</span>      <span class="o">:</span> <span class="n">MimeTypesMap</span>
+    <span class="n">homeDirectory</span>     <span class="o">:</span> <span class="kt">string</span>
+    <span class="n">compressionFolder</span> <span class="o">:</span> <span class="kt">string</span>
+    <span class="n">logger</span>            <span class="o">:</span> <span class="nn">Log</span><span class="p">.</span><span class="n">Logger</span>
+    <span class="n">sessionProvider</span>   <span class="o">:</span> <span class="n">ISessionProvider</span> <span class="o">}</span>
+
+<span class="ow">and</span> <span class="n">HttpContext</span> <span class="o">=</span>
+  <span class="o">{</span> <span class="n">request</span>   <span class="o">:</span> <span class="n">HttpRequest</span>
+    <span class="n">runtime</span>   <span class="o">:</span> <span class="n">HttpRuntime</span>
+    <span class="n">userState</span> <span class="o">:</span> <span class="n">Map</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">,</span> <span class="kt">obj</span><span class="o">&gt;</span>
+    <span class="n">response</span>  <span class="o">:</span> <span class="n">HttpResult</span> <span class="o">}</span>
+
+<span class="ow">and</span> <span class="n">ISessionProvider</span> <span class="o">=</span>
+  <span class="k">abstract</span> <span class="k">member</span> <span class="n">Generate</span> <span class="o">:</span> <span class="n">TimeSpan</span> <span class="o">*</span> <span class="n">HttpContext</span> <span class="o">-&gt;</span> <span class="kt">string</span>
+  <span class="k">abstract</span> <span class="k">member</span> <span class="n">Validate</span> <span class="o">:</span> <span class="kt">string</span> <span class="o">*</span> <span class="n">HttpContext</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+  <span class="k">abstract</span> <span class="k">member</span> <span class="n">Session</span><span class="o">&lt;</span><span class="k">&#39;</span><span class="n">a</span><span class="o">&gt;</span>  <span class="o">:</span> <span class="kt">string</span> <span class="o">-&gt;</span> <span class="n">SessionStore</span><span class="o">&lt;</span><span class="k">&#39;</span><span class="n">a</span><span class="o">&gt;</span></code></pre></div>
+
+<h2 id="default-supported-http-verbs">Default-supported HTTP Verbs</h2>
+
+<p>See <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">RFC 2616</a>.</p>
+
+<p>These applicatives match on HTTP verbs.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">let</span> <span class="nv">GET</span>     <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;GET&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">POST</span>    <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;POST&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">DELETE</span>  <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;DELETE&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">PUT</span>     <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;PUT&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">HEAD</span>    <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;HEAD&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">CONNECT</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;CONNECT&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">PATCH</span>   <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;PATCH&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">TRACE</span>   <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;TRACE&quot;</span> <span class="n">x</span>
+<span class="k">let</span> <span class="nv">OPTIONS</span> <span class="o">(</span><span class="n">x</span> <span class="o">:</span> <span class="n">HttpRequest</span><span class="o">)</span> <span class="o">=</span> <span class="o">``</span><span class="k">method</span><span class="o">``</span> <span class="s">&quot;OPTIONS&quot;</span> <span class="n">x</span></code></pre></div>
+
+<h2 id="server-configuration">Server configuration</h2>
+
+<p>The first argument to <code>startWebServer</code> is a configuration record with the following signature.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="sd">/// The core configuration of suave. See also Suave.Web.defaultConfig which</span>
+<span class="sd">/// you can use to bootstrap the configuration:</span>
+<span class="sd">/// &lt;code&gt;{ defaultConfig with bindings = [ ... ] }&lt;/code&gt;</span>
+<span class="k">type</span> <span class="nc">SuaveConfig</span> <span class="o">=</span>
+  <span class="o">{</span> <span class="sd">/// The bindings for the web server to launch with</span>
+    <span class="n">bindings</span>          <span class="o">:</span> <span class="n">HttpBinding</span> <span class="kt">list</span>
+
+    <span class="sd">/// The server key used for creating cookies</span>
+    <span class="n">serverKey</span>         <span class="o">:</span> <span class="kt">byte</span> <span class="bp">[]</span> <span class="c1">// should be 64 bytes (256 bits)</span>
+
+    <span class="sd">/// An error handler to use for handling exceptions that are</span>
+    <span class="sd">/// are thrown from the web parts</span>
+    <span class="n">errorHandler</span>      <span class="o">:</span> <span class="n">ErrorHandler</span>
+
+    <span class="sd">/// Timeout to wait for the socket bind to finish</span>
+    <span class="n">listenTimeout</span>     <span class="o">:</span> <span class="n">TimeSpan</span>
+
+    <span class="sd">/// A cancellation token for the web server. Signalling this token</span>
+    <span class="sd">/// means that the web server shuts down</span>
+    <span class="n">cancellationToken</span> <span class="o">:</span> <span class="n">CancellationToken</span>
+
+    <span class="sd">/// buffer size for socket operations</span>
+    <span class="n">bufferSize</span>        <span class="o">:</span> <span class="n">int</span>
+
+    <span class="sd">/// max number of concurrent socket operations</span>
+    <span class="n">maxOps</span>            <span class="o">:</span> <span class="n">int</span>
+
+    <span class="sd">/// MIME types</span>
+    <span class="n">mimeTypesMap</span>      <span class="o">:</span> <span class="n">MimeTypesMap</span>
+
+    <span class="sd">/// Home or root directory</span>
+    <span class="n">homeFolder</span>        <span class="o">:</span> <span class="kt">string</span> <span class="n">option</span>
+
+    <span class="sd">/// Folder for temporary compressed files</span>
+    <span class="n">compressedFilesFolder</span> <span class="o">:</span> <span class="kt">string</span> <span class="n">option</span>
+
+    <span class="sd">/// A logger to log with</span>
+    <span class="n">logger</span>           <span class="o">:</span> <span class="nn">Log</span><span class="p">.</span><span class="n">Logger</span>
+
+    <span class="sd">/// A http session provider</span>
+    <span class="n">sessionProvider</span>  <span class="o">:</span> <span class="n">ISessionProvider</span> <span class="o">}</span></code></pre></div>
+
+<p>With <code>Protocol</code> , <code>HttpBinding</code> and <code>MimeType</code> defined like follows:</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">type</span> <span class="nc">ITlsProvider</span> <span class="o">=</span>
+  <span class="k">abstract</span> <span class="k">member</span> <span class="n">Wrap</span>  <span class="o">:</span> <span class="n">Connection</span> <span class="o">-&gt;</span> <span class="n">SocketOp</span><span class="o">&lt;</span><span class="n">Connection</span><span class="o">&gt;</span>
+
+<span class="sd">/// Gets the supported protocols, HTTP and HTTPS with a certificate</span>
+<span class="k">type</span> <span class="nc">Protocol</span> <span class="o">=</span>
+  <span class="sd">/// The HTTP protocol is the core protocol</span>
+  <span class="o">|</span> <span class="n">HTTP</span>
+  <span class="sd">/// The HTTP protocol tunneled in a TLS tunnel</span>
+  <span class="o">|</span> <span class="n">HTTPS</span> <span class="k">of</span> <span class="n">ITlsProvider</span>
+
+<span class="sd">/// A HTTP binding is a protocol is the product of HTTP or HTTP, a DNS or IP binding </span>
+<span class="sd">/// and a port number</span>
+<span class="k">type</span> <span class="nc">HttpBinding</span> <span class="o">=</span>
+  <span class="sd">/// The scheme in use</span>
+  <span class="o">{</span> <span class="n">scheme</span> <span class="o">:</span> <span class="n">Protocol</span>
+    <span class="sd">/// The host or IP address to bind to. This will be interpreted by the operating system</span>
+    <span class="n">ip</span>     <span class="o">:</span> <span class="n">IPAddress</span>
+    <span class="sd">/// The port for the binding</span>
+    <span class="n">port</span>   <span class="o">:</span> <span class="kt">uint16</span> <span class="o">}</span>
+
+<span class="k">type</span> <span class="nc">MimeType</span> <span class="o">=</span>
+  <span class="sd">/// The name of the mime type, i.e &quot;text/plain&quot;</span>
+  <span class="o">{</span> <span class="n">name</span>         <span class="o">:</span> <span class="kt">string</span>
+    <span class="sd">/// If the server will compress the file when clients ask for gzip or </span>
+    <span class="sd">/// deflate in the `Accept-Encoding` header</span>
+    <span class="n">compression</span>  <span class="o">:</span> <span class="kt">bool</span> <span class="o">}</span></code></pre></div>
+
+<h2 id="serving-static-files-http-compression-and-mime-types">Serving static files, HTTP Compression and MIME types</h2>
+
+<p>Suave supports <strong>gzip</strong> and <strong>deflate</strong> http compression encodings. Http
+compression is configured via the MIME types map in the server configuration
+record. By default Suave does not serve files with extensions not registered in
+the mime types map.</p>
+
+<p>The default mime types map <code>defaultMimeTypesMap</code> looks like this.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">let</span> <span class="nv">defaultMimeTypesMap</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="s">&quot;.css&quot;</span> <span class="o">-&gt;</span> <span class="n">mkMimeType</span> <span class="s">&quot;text/css&quot;</span> <span class="k">true</span>
+  <span class="o">|</span> <span class="s">&quot;.gif&quot;</span> <span class="o">-&gt;</span> <span class="n">mkMimeType</span> <span class="s">&quot;image/gif&quot;</span> <span class="k">false</span>
+  <span class="o">|</span> <span class="s">&quot;.png&quot;</span> <span class="o">-&gt;</span> <span class="n">mkMimeType</span> <span class="s">&quot;image/png&quot;</span> <span class="k">false</span>
+  <span class="o">|</span> <span class="s">&quot;.htm&quot;</span>
+  <span class="o">|</span> <span class="s">&quot;.html&quot;</span> <span class="o">-&gt;</span> <span class="n">mkMimeType</span> <span class="s">&quot;text/html&quot;</span> <span class="k">true</span>
+  <span class="o">|</span> <span class="s">&quot;.jpe&quot;</span>
+  <span class="o">|</span> <span class="s">&quot;.jpeg&quot;</span>
+  <span class="o">|</span> <span class="s">&quot;.jpg&quot;</span> <span class="o">-&gt;</span> <span class="n">mkMimeType</span> <span class="s">&quot;image/jpeg&quot;</span> <span class="k">false</span>
+  <span class="o">|</span> <span class="s">&quot;.js&quot;</span>  <span class="o">-&gt;</span> <span class="n">mkMimeType</span> <span class="s">&quot;application/x-javascript&quot;</span> <span class="k">true</span>
+  <span class="o">|</span> <span class="o">_</span>      <span class="o">-&gt;</span> <span class="n">None</span></code></pre></div>
+
+<p>You can register additional MIME extensions by creating a new mime map in the following fashion.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="c1">// Adds a new mime type to the default map</span>
+<span class="k">let</span> <span class="nv">mimeTypes</span> <span class="o">=</span>
+  <span class="n">defaultMimeTypesMap</span>
+    <span class="o">&gt;=&gt;</span> <span class="o">(</span><span class="k">function</span> <span class="o">|</span> <span class="s">&quot;.avi&quot;</span> <span class="o">-&gt;</span> <span class="n">mkMimeType</span> <span class="s">&quot;video/avi&quot;</span> <span class="k">false</span> <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">None</span><span class="o">)</span>
+
+<span class="k">let</span> <span class="nv">webConfig</span> <span class="o">=</span> <span class="o">{</span> <span class="n">defaultConfig</span> <span class="k">with</span> <span class="n">mimeTypesMap</span> <span class="o">=</span> <span class="n">mimeTypes</span> <span class="o">}</span></code></pre></div>
+
+<h2 id="overview">Overview</h2>
+
+<p>A request life-cycle begins with the <code>HttpProcessor</code> that takes an <code>HttpRequest</code>
+and the request as bytes and starts parsing it. It returns an <code>HttpRequest
+option</code> that, if Some, gets run against the WebParts passed.</p>
+
+<h3 id="the-webpart">The WebPart</h3>
+
+<p>A web part is a thing that acts on a HttpContext, the web part could fail by
+returning <code>None</code> or succeed and produce a new HttpContext. Each web part can
+execute asynchronously, and it’s not until it is evaluated that the async is
+evaluated. It will be evaluated on the same fibre (asynchronous execution
+context) that is consuming from the browser’s TCP socket.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">type</span> <span class="nc">SuaveTask</span><span class="o">&lt;</span><span class="k">&#39;</span><span class="n">a</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">Async</span><span class="o">&lt;</span><span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span><span class="o">&gt;</span>
+<span class="k">type</span> <span class="nc">WebPart</span> <span class="o">=</span> <span class="n">HttpContext</span> <span class="o">-&gt;</span> <span class="n">SuaveTask</span><span class="o">&lt;</span><span class="n">HttpContext</span><span class="o">&gt;</span>
+<span class="c1">// hence: WebPart = HttpContext -&gt; Async&lt;HttpContext option&gt;</span></code></pre></div>
+
+<h3 id="the-errorhandler">The ErrorHandler</h3>
+
+<p>An error handler takes the exception, a programmer-provided message, a request
+(that failed) and returns a web part for the handling of the
+error.</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="sd">/// An error handler takes the exception, a programmer-provided message, a</span>
+<span class="sd">/// request (that failed) and returns</span>
+<span class="sd">/// an asynchronous workflow for the handling of the error.</span>
+<span class="k">type</span> <span class="nc">ErrorHandler</span> <span class="o">=</span> <span class="n">Exception</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">-&gt;</span> <span class="n">WebPart</span></code></pre></div>
+
+<h2 id="getting-hold-of-suaves-logs">Getting Hold of Suave’s Logs</h2>
+
+<p>When you are using suave you will probably want to funnel all logs from the
+output to your own log sink. We provide the interface <code>Logger</code> to do that; just
+set the propery <code>logger</code> in the configuration to an instance of your thread-safe
+logger. An example:</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">type</span> <span class="nc">MyHackLogger</span><span class="o">(</span><span class="n">minLevel</span><span class="o">)</span> <span class="o">=</span>
+  <span class="k">interface</span> <span class="n">Logger</span> <span class="k">with</span>
+    <span class="k">member</span> <span class="n">x</span><span class="p">.</span><span class="nf">Log</span> <span class="n">level</span> <span class="n">fLine</span> <span class="o">=</span>
+      <span class="k">if</span> <span class="n">level</span> <span class="o">&gt;=</span> <span class="n">minLevel</span> <span class="k">then</span>
+        <span class="c1">// don&#39;t do this for real ;)</span>
+        <span class="nn">System</span><span class="p">.</span><span class="nn">Windows</span><span class="p">.</span><span class="nn">Forms</span><span class="p">.</span><span class="nn">MessageBox</span><span class="p">.</span><span class="n">Show</span><span class="o">((</span><span class="n">fLine</span> <span class="bp">()</span><span class="o">).</span><span class="n">message</span><span class="o">)</span></code></pre></div>
+
+<p>You can use Logary for integrated logging:</p>
+
+<div class="highlight"><pre><code class="language-dosbatch" data-lang="dosbatch">Install-Package Logary.Adapters.Suave</code></pre></div>
+
+<p>Use the <code>SuaveAdapter</code> type to set the Logger in Suave’s configuration:</p>
+
+<div class="highlight"><pre><code class="language-fsharp" data-lang="fsharp"><span class="k">open</span> <span class="nn">Suave.Logging</span>
+
+<span class="k">use</span> <span class="n">logary</span> <span class="o">=</span>
+  <span class="n">withLogary&#39;</span> <span class="s">&quot;logibit.web&quot;</span> <span class="o">(</span>
+    <span class="n">withTargets</span> <span class="o">[</span>
+      <span class="nn">Console</span><span class="p">.</span><span class="n">create</span> <span class="nn">Console</span><span class="p">.</span><span class="n">empty</span> <span class="s">&quot;console&quot;</span>
+      <span class="nn">Debugger</span><span class="p">.</span><span class="n">create</span> <span class="nn">Debugger</span><span class="p">.</span><span class="n">empty</span> <span class="s">&quot;debugger&quot;</span>
+    <span class="o">]</span> <span class="o">&gt;&gt;</span>
+    <span class="n">withMetrics</span> <span class="o">(</span><span class="nn">Duration</span><span class="p">.</span><span class="n">FromMilliseconds</span> <span class="mi">5000L</span><span class="o">)</span> <span class="o">[</span>
+      <span class="nn">WinPerfCounters</span><span class="p">.</span><span class="n">create</span> <span class="o">(</span><span class="nn">WinPerfCounters</span><span class="p">.</span><span class="nn">Common</span><span class="p">.</span><span class="n">cpuTimeConf</span><span class="o">)</span> <span class="s">&quot;wperf&quot;</span>
+<span class="o">(</span><span class="nn">Duration</span><span class="p">.</span><span class="n">FromMilliseconds</span> <span class="mi">300L</span><span class="o">)</span>
+      <span class="o">]</span> <span class="o">&gt;&gt;</span>
+      <span class="n">withRules</span> <span class="o">[</span>
+        <span class="nn">Rule</span><span class="p">.</span><span class="n">createForTarget</span> <span class="s">&quot;console&quot;</span>
+        <span class="nn">Rule</span><span class="p">.</span><span class="n">createForTarget</span> <span class="s">&quot;debugger&quot;</span>
+      <span class="o">]</span>
+    <span class="o">)</span>
+
+<span class="k">let</span> <span class="nv">webConfig</span> <span class="o">=</span>
+  <span class="o">{</span> <span class="n">defaultConfig</span> <span class="k">with</span>
+      <span class="n">logger</span>   <span class="o">=</span> <span class="n">SuaveAdapter</span><span class="o">(</span><span class="n">logary</span><span class="o">.</span><span class="n">GetLogger</span> <span class="s">&quot;suave&quot;</span><span class="o">)</span>
+  <span class="o">}</span></code></pre></div>
+
+<h2 id="deploying-suave-to-heroku">Deploying Suave to Heroku</h2>
+
+<p>Suave web sites can be as simple as a single F# script which starts a web server, or a full project.</p>
+
+<p>Your application needs to be either a single script <code>app.fsx</code> (plus a Heroku <code>Procfile</code> and <code>dummy.sln</code> file) OR 
+a directory with a <code>.sln</code> solution (plus a Heroku <code>Procfile</code>)</p>
+
+<p>Optionally, you can have a <code>paket.dependencies</code> OR <code>packages.config</code> files</p>
+
+<p>Either way, your application must start a web server that binds to 0.0.0.0:$PORT.</p>
+
+<p>Your <code>Procfile</code> must specify how the application starts.</p>
+
+<p>If you don’t have an app.fsx already that implements your website, then clone an example, putting it in a new directory (replace myproj by a unique project name)</p>
+
+<p>You can one-click-deploy the Suave sample to Heroku by clicking the button below.</p>
+
+<p><a href="https://heroku.com/deploy?template=https://github.com/SuaveIO/heroku-getting-started"><img src="https://www.herokucdn.com/deploy/button.png" alt="Deploy" /></a></p>
+
+<p>Or deploy the sample from the CLI.</p>
+
+<ol>
+  <li>
+    <p><a href="https://toolbelt.heroku.com/">Install the Heroku Toolbelt</a> and login to Heroku using the command-line tools:</p>
+
+    <pre><code>heroku login
+</code></pre>
+  </li>
+  <li>
+    <p>Clone the sample:</p>
+
+    <pre><code>git clone https://github.com/SuaveIO/heroku-getting-started.git myproj
+cd myproj
+</code></pre>
+  </li>
+  <li>
+    <p>Create a new heroku web app and register “heroku” as a remote you can push to:</p>
+
+    <pre><code>heroku create myproj --buildpack https://github.com/SuaveIO/mono-script-buildpack.git 
+</code></pre>
+  </li>
+  <li>
+    <p>Push!</p>
+
+    <pre><code> git push heroku master
+</code></pre>
+  </li>
+</ol>
+
+<p>When pushing, use an empty user name. You may need to use <code>git auth:token</code> to get a app token to use as a password here.</p>
+
+<p>You can change the buildpack being used at a later date (e.g. to update to a later version of Mono) using </p>
+
+<pre><code>heroku buildpack:set https://github.com/your-build-pack-repo
+</code></pre>
+
+<p>If using github or bitbucket, find your app on Heroku and enable automatic deploy so you don’t need to push explciitly.</p>
+
+<p>You can look at logs from your web server script using <code>heroku logs</code>.</p>
+
+
+      </section>
+      <br/>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Suave maintained by
+          <a href="https://github.com/ademar">ademar</a> and
+          <a href="https://github.com/haf">haf</a>.
+        </p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-45083137-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
