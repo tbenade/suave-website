@@ -28,6 +28,7 @@ let config =
     { defaultConfig with 
         logger = Logging.Loggers.saneDefaultsFor Logging.LogLevel.Verbose
         bindings=[ (if port = null then HttpBinding.mk' HTTP  "127.0.0.1" 8080
+                    else HttpBinding.mk' HTTP  "0.0.0.0" (int32 port)) ] }
 
 let app : WebPart = 
     choose [
