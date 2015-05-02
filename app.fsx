@@ -19,7 +19,6 @@ open Suave.Http.ServerErrors
 open Suave.Http.RequestErrors
 open Suave.Web             // for config
 open Suave.Types
-open Suave.Log
 open Suave.Logging
 open Suave.Http.Files             
 
