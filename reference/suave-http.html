@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Http - SuaveIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Henrik Feldt, Ademar Gonzalez">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="http://suave.io/content/style.css" />
+    <script type="text/javascript" src="http://suave.io/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="http://suave.io/index.html">SuaveIO</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Http</h1>
+<div class="xmldoc">
+<p>The HTTP module has these main sub-modules:
+Response - response and response_f functions.Writers - ways to modify the response.Intermediate - 100 and 101 response codes.Successful- 2xx response codes.Redirection - 3xx response codes.RequestErrors - 4xx response codes.ServerErrors - 5xx response codes.Applicatives - use to filter down the request to something you wantFiles - send files to the clientAuthentication - Methods for authenticating http requestsand these main types:WebResult = Async<unit> optionWebPart = HttpContext -&gt; WebResultHttpMethod</p>
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-applicatives.html">Applicatives</a>
+          </td>
+          <td class="xmldoc"><p>Module that deals with the applicatives of suave - use functions from this module
+to filter what requests a given route responds to.
+Functions have signature f :: params... -&gt; HttpContext -&gt; HttpContext option.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-authentication.html">Authentication</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-embedded.html">Embedded</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-eventsource.html">EventSource</a>
+          </td>
+          <td class="xmldoc"><p>A module that implements the Server-Sent Event specification, which can be
+read at www.w3.org/TR/eventsource.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-files.html">Files</a>
+          </td>
+          <td class="xmldoc"><p>The files module can be used to serve from the file system. It encapsulates
+common patterns like verifying that back-symlinks or keywords aren't used
+to gain access outside the intended folder.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-intermediate.html">Intermediate</a>
+          </td>
+          <td class="xmldoc"><p>Intermediate responses - SUAVE TODO
+Functions have signature f :: TODO</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-redirection.html">Redirection</a>
+          </td>
+          <td class="xmldoc"><p>Functions have signature f :: params... -&gt; HttpContext -&gt; Async<unit> option.</p>
+
+<p>Functions from here are 'end routes' in that they don't require you to keep
+returning applicatives, but can end up in an async monad/workflow that writes
+the data to the client in the end.</p>
+
+<p>This class of status code indicates that further action needs to be
+taken by the user agent in order to fulfill the request.  The action
+required MAY be carried out by the user agent without interaction
+with the user if and only if the method used in the second request is
+GET or HEAD. A client SHOULD detect infinite redirection loops, since
+such loops generate network traffic for each redirection.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-requesterrors.html">RequestErrors</a>
+          </td>
+          <td class="xmldoc"><p>10.4 Client Error 4xxThe 4xx class of status code is intended for cases in which the
+ client seems to have erred. Except when responding to a HEAD request,
+ the server SHOULD include an entity containing an explanation of the
+ error situation, and whether it is a temporary or permanent
+ condition. These status codes are applicable to any request method.
+ User agents SHOULD display any included entity to the user.</p>
+
+<p>If the client is sending data, a server implementation using TCP
+ SHOULD be careful to ensure that the client acknowledges receipt of
+ the packet(s) containing the response, before the server closes the
+ input connection. If the client continues sending data to the server
+ after the close, the server's TCP stack will send a reset packet to
+ the client, which may erase the client's unacknowledged input buffers
+ before they can be read and interpreted by the HTTP application.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-response.html">Response</a>
+          </td>
+          <td class="xmldoc"><p>general response functions</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-servererrors.html">ServerErrors</a>
+          </td>
+          <td class="xmldoc"><p>10.5 Server Error 5xx
+Response status codes beginning with the digit "5" indicate cases in
+which the server is aware that it has erred or is incapable of
+performing the request. Except when responding to a HEAD request, the
+server SHOULD include an entity containing an explanation of the
+error situation, and whether it is a temporary or permanent
+condition. User agents SHOULD display any included entity to the
+user. These response codes are applicable to any request method.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-successful.html">Successful</a>
+          </td>
+          <td class="xmldoc"><p>2xx successful responses</p>
+
+<p>Functions have signature f :: params... -&gt; HttpContext -&gt; Async<unit> option.</p>
+
+<p>Functions from here are 'end routes' in that they don't require you to keep
+returning applicatives, but can end up in an async monad/workflow that writes
+the data to the client in the end.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http-writers.html">Writers</a>
+          </td>
+          <td class="xmldoc"><p>Module that allows changing the output response in different ways.
+Functions have signature f :: params... -&gt; HttpContext -&gt; HttpContext.</p>
+</td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '80', 80)" onmouseover="showTip(event, '80', 80)">
+            ( &lt;|&gt; ) first second
+          </code>
+          <div class="tip" id="80">
+            <strong>Signature:</strong> first:WebPart -&gt; second:WebPart -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L33-33" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Left-to-right Kleisli composition of web parts.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '81', 81)" onmouseover="showTip(event, '81', 81)">
+            ( &gt;=&gt; ) first second input
+          </code>
+          <div class="tip" id="81">
+            <strong>Signature:</strong> first:(&#39;T -&gt; &#39;U option) -&gt; second:(&#39;T -&gt; &#39;U option) -&gt; input:&#39;T -&gt; &#39;U option<br />
+                          <strong>Type parameters:</strong> 'T, 'U          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L28-28" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Left-to-right Kleisli composition of monads.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '82', 82)" onmouseover="showTip(event, '82', 82)">
+            ( &gt;&gt;= ) first second input
+          </code>
+          <div class="tip" id="82">
+            <strong>Signature:</strong> first:(&#39;T -&gt; Async&lt;&#39;U option&gt;) -&gt; second:(&#39;U -&gt; Async&lt;&#39;V option&gt;) -&gt; input:&#39;T -&gt; Async&lt;&#39;V option&gt;<br />
+                          <strong>Type parameters:</strong> 'T, 'U, 'V          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L24-24" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Compose (bind) two arguments, 'first' and 'second', so that the result of
+the composition can be applied to an argument of 'input' and then passed
+to 'second', if 'first' yields a value.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '83', 83)" onmouseover="showTip(event, '83', 83)">
+            bind second first input
+          </code>
+          <div class="tip" id="83">
+            <strong>Signature:</strong> second:(&#39;U -&gt; Async&lt;&#39;V option&gt;) -&gt; first:(&#39;T -&gt; Async&lt;&#39;U option&gt;) -&gt; input:&#39;T -&gt; Async&lt;&#39;V option&gt;<br />
+                          <strong>Type parameters:</strong> 'U, 'V, 'T          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L14-14" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Compose (bind) two web parts; see (&gt;&gt;=) -- note the different parameter
+ordering</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '84', 84)" onmouseover="showTip(event, '84', 84)">
+            choose options
+          </code>
+          <div class="tip" id="84">
+            <strong>Signature:</strong> options:WebPart list -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L46-46" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Entry-point for composing the applicative routes of the http application,
+by iterating the options, applying the context, arg, to the predicate
+from the list of options, until there's a match/a Some(x) which can be
+run.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '85', 85)" onmouseover="showTip(event, '85', 85)">
+            cnst x arg2
+          </code>
+          <div class="tip" id="85">
+            <strong>Signature:</strong> x:&#39;T -&gt; &#39;U -&gt; &#39;T<br />
+                          <strong>Type parameters:</strong> 'T, 'U          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L85-85" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>The constant function, which returns its constant, no matter
+its input.
+- theorem: identity = (cnst |&gt; warbler)
+(warbler cnst) x = cnst x x = fun _ -&gt; x</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '86', 86)" onmouseover="showTip(event, '86', 86)">
+            cond item f g arg4
+          </code>
+          <div class="tip" id="86">
+            <strong>Signature:</strong> item:&#39;T option -&gt; f:(&#39;T -&gt; &#39;U -&gt; &#39;V) -&gt; g:(&#39;U -&gt; &#39;V) -&gt; &#39;U -&gt; &#39;V<br />
+                          <strong>Type parameters:</strong> 'T, 'U, 'V          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L87-87" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>The conditional function that applies f x a if there's a value in d,
+or otherwise, applies g a, if there is no value in d.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '87', 87)" onmouseover="showTip(event, '87', 87)">
+            fail 
+          </code>
+          <div class="tip" id="87">
+            <strong>Signature:</strong> Async&lt;HttpContext option&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L10-10" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return failure without any value</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '88', 88)" onmouseover="showTip(event, '88', 88)">
+            never 
+          </code>
+          <div class="tip" id="88">
+            <strong>Signature:</strong> WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L12-12" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return failure with a value that is ignored</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '89', 89)" onmouseover="showTip(event, '89', 89)">
+            succeed item
+          </code>
+          <div class="tip" id="89">
+            <strong>Signature:</strong> item:&#39;T -&gt; Async&lt;&#39;T option&gt;<br />
+                          <strong>Type parameters:</strong> 'T          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L8-8" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Return success with some value</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '90', 90)" onmouseover="showTip(event, '90', 90)">
+            warbler f arg2
+          </code>
+          <div class="tip" id="90">
+            <strong>Signature:</strong> f:(&#39;T -&gt; &#39;T -&gt; &#39;U) -&gt; &#39;T -&gt; &#39;U<br />
+                          <strong>Type parameters:</strong> 'T, 'U          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L83-83" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Pipe the request through to a bird that can peck at it.</p>
+
+<p>Put another way, using 'warbler' lets you look at the first parameter and
+then make a decision about what thing to return (it's most likely a
+WebPart you'll be returning). (Remember, WebPart is
+HttpContext -&gt; Async<HttpContext option>) where HttpContext is 'a and
+Async<_> is 'b.</p>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="http://suave.io/index.html">
+            <img src="http://suave.io/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">SuaveIO</li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://www.nuget.org/packages/SuaveIO">Get SuaveIO package via NuGet</a></li>
+            <li><a href="http://github.com/SuaveIO/suave">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/CONTRIBUTING.md">Contributing to SuaveIO</a></li>
+            
+            <li class="nav-header">Documentation</li>
+
+            <li><a href="http://suave.io/index.html">Introduction</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature1.html">Feature 1</a></li>
+            <li><a href="http://suave.io/feature2.html">Feature 2</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature3.html">Feature 3</a></li>
+            <li><a href="http://suave.io/feature4.html">Feature 4</a></li>
+
+            <li class="nav-header">Tutorials</li>
+
+            <li><a href="http://suave.io/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="http://suave.io/tutorial2.html">Tutorial 2</a></li>
+
+            <li class="nav-header">Reference</li>
+
+            <li><a href="http://suave.io/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/SuaveIO/suave"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>

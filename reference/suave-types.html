@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Types - SuaveIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Henrik Feldt, Ademar Gonzalez">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="http://suave.io/content/style.css" />
+    <script type="text/javascript" src="http://suave.io/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="http://suave.io/index.html">SuaveIO</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Types</h1>
+<div class="xmldoc">
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-errorhandler.html">ErrorHandler</a>
+          </td>
+          <td class="xmldoc"><p>An error handler takes the exception, a programmer-provided message, a
+request (that failed) and returns an asynchronous workflow for the handling
+of the error.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-host.html">Host</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpbinding.html">HttpBinding</a>
+          </td>
+          <td class="xmldoc"><p>A HTTP binding is a protocol is the product of HTTP or HTTP, a DNS or IP binding and a port number</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpcode.html">HttpCode</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpcontent.html">HttpContent</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpcontext.html">HttpContext</a>
+          </td>
+          <td class="xmldoc"><p>The HttpContext is the container of the request, runtime, user-state and
+response.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpcookie.html">HttpCookie</a>
+          </td>
+          <td class="xmldoc"><p>HTTP cookie</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpmethod.html">HttpMethod</a>
+          </td>
+          <td class="xmldoc"><p>These are the known HTTP methods. See <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html">http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html</a></p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httprequest.html">HttpRequest</a>
+          </td>
+          <td class="xmldoc"><p>A holder for the data extracted from the request.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpresult.html">HttpResult</a>
+          </td>
+          <td class="xmldoc"><p>The HttpResult is the structure that you work with to tell Suave how to
+send the response. Have a look at the docs for HttpContent for further
+details on what is possible.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpruntime.html">HttpRuntime</a>
+          </td>
+          <td class="xmldoc"><p>The HttpRuntime is created from the SuaveConfig structure when the web
+server starts. You can also use the <code>HttpRuntime</code> module to create a new
+value yourself, or use the <code>empty</code> one.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-httpupload.html">HttpUpload</a>
+          </td>
+          <td class="xmldoc"><p>A holder for uploaded file meta-data</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-itlsprovider.html">ITlsProvider</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-lens-2.html">Lens<'T, 'P></a>
+          </td>
+          <td class="xmldoc"><p>Obsolete</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-mimetype.html">MimeType</a>
+          </td>
+          <td class="xmldoc"><p>A file's mime type and if compression is enabled or not</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-mimetypesmap.html">MimeTypesMap</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-protocol.html">Protocol</a>
+          </td>
+          <td class="xmldoc"><p>Gets the supported protocols, HTTP and HTTPS with a certificate</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-serverkey.html">ServerKey</a>
+          </td>
+          <td class="xmldoc"><p>A server-key is a 256 bit key with high entropy</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-statestore.html">StateStore</a>
+          </td>
+          <td class="xmldoc"><p>A session store is a reader and a writer function pair keyed on strings.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-suaveconfig.html">SuaveConfig</a>
+          </td>
+          <td class="xmldoc"><p>The core configuration of suave. See also Suave.Web.default<em>config which
+you can use to bootstrap the configuration:
+<code>{ default</em>config with bindings = [ ... ] }</code></p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-types-webpart.html">WebPart</a>
+          </td>
+          <td class="xmldoc"><p>A WebPart is an asynchronous function that transforms the HttpContext.  An asynchronous return
+value of None indicates 'did not handle'.</p>
+</td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-codes.html">Codes</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-httpbindingmodule.html">HttpBinding</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-httpcontextmodule.html">HttpContext</a>
+          </td>
+          <td class="xmldoc"><p>A module that provides functions to create a new HttpContext.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-httpcookiemodule.html">HttpCookie</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-httpmethodmodule.html">HttpMethod</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-httprequestmodule.html">HttpRequest</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-httpruntimemodule.html">HttpRuntime</a>
+          </td>
+          <td class="xmldoc"><p>a module that gives you the <code>empty</code> (beware) and <code>mk</code> functions for creating
+a HttpRuntime</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types-suaveconfigmodule.html">SuaveConfig</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '284', 284)" onmouseover="showTip(event, '284', 284)">
+            context f a
+          </code>
+          <div class="tip" id="284">
+            <strong>Signature:</strong> f:(HttpContext -&gt; HttpContext -&gt; &#39;?6502) -&gt; a:HttpContext -&gt; &#39;?6502<br />
+                          <strong>Type parameters:</strong> '?6502          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Types.fs#L666-666" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '285', 285)" onmouseover="showTip(event, '285', 285)">
+            request f a
+          </code>
+          <div class="tip" id="285">
+            <strong>Signature:</strong> f:(HttpRequest -&gt; HttpContext -&gt; &#39;?6500) -&gt; a:HttpContext -&gt; &#39;?6500<br />
+                          <strong>Type parameters:</strong> '?6500          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Types.fs#L664-664" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="http://suave.io/index.html">
+            <img src="http://suave.io/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">SuaveIO</li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://www.nuget.org/packages/SuaveIO">Get SuaveIO package via NuGet</a></li>
+            <li><a href="http://github.com/SuaveIO/suave">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/CONTRIBUTING.md">Contributing to SuaveIO</a></li>
+            
+            <li class="nav-header">Documentation</li>
+
+            <li><a href="http://suave.io/index.html">Introduction</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature1.html">Feature 1</a></li>
+            <li><a href="http://suave.io/feature2.html">Feature 2</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature3.html">Feature 3</a></li>
+            <li><a href="http://suave.io/feature4.html">Feature 4</a></li>
+
+            <li class="nav-header">Tutorials</li>
+
+            <li><a href="http://suave.io/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="http://suave.io/tutorial2.html">Tutorial 2</a></li>
+
+            <li class="nav-header">Reference</li>
+
+            <li><a href="http://suave.io/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/SuaveIO/suave"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>

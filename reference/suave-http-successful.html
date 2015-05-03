@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Successful - SuaveIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Henrik Feldt, Ademar Gonzalez">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="http://suave.io/content/style.css" />
+    <script type="text/javascript" src="http://suave.io/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="http://suave.io/index.html">SuaveIO</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Successful</h1>
+<div class="xmldoc">
+<p>2xx successful responses</p>
+
+<p>Functions have signature f :: params... -&gt; HttpContext -&gt; Async<unit> option.</p>
+
+<p>Functions from here are 'end routes' in that they don't require you to keep
+returning applicatives, but can end up in an async monad/workflow that writes
+the data to the client in the end.</p>
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '202', 202)" onmouseover="showTip(event, '202', 202)">
+            accepted s
+          </code>
+          <div class="tip" id="202">
+            <strong>Signature:</strong> s:byte [] -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L185-185" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>202</p>
+
+<p>The request has been accepted for processing, but the processing has
+not been completed. The request might or might not eventually be
+acted upon, as it might be disallowed when processing actually takes
+place. There is no facility for re-sending a status code from an
+asynchronous operation such as this.</p>
+
+<p>The 202 response is intentionally non-committal. Its purpose is to
+allow a server to accept a request for some other process (perhaps a
+batch-oriented process that is only run once per day) without
+requiring that the user agent's connection to the server persist
+until the process is completed. The entity returned with this
+response SHOULD include an indication of the request's current status
+and either a pointer to a status monitor or some estimate of when the
+user can expect the request to be fulfilled.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '203', 203)" onmouseover="showTip(event, '203', 203)">
+            ACCEPTED s
+          </code>
+          <div class="tip" id="203">
+            <strong>Signature:</strong> s:string -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L187-187" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>202</p>
+
+<p>The request has been accepted for processing, but the processing has
+not been completed. The request might or might not eventually be
+acted upon, as it might be disallowed when processing actually takes
+place. There is no facility for re-sending a status code from an
+asynchronous operation such as this.</p>
+
+<p>The 202 response is intentionally non-committal. Its purpose is to
+allow a server to accept a request for some other process (perhaps a
+batch-oriented process that is only run once per day) without
+requiring that the user agent's connection to the server persist
+until the process is completed. The entity returned with this
+response SHOULD include an indication of the request's current status
+and either a pointer to a status monitor or some estimate of when the
+user can expect the request to be fulfilled.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '204', 204)" onmouseover="showTip(event, '204', 204)">
+            created s
+          </code>
+          <div class="tip" id="204">
+            <strong>Signature:</strong> s:byte [] -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L181-181" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>201</p>
+
+<p>Write the bytes to the body as a byte array</p>
+
+<p>The request has been fulfilled and resulted in a new resource being
+created. The newly created resource can be referenced by the URI(s)
+returned in the entity of the response, with the most specific URI
+for the resource given by a Location header field. The response
+SHOULD include an entity containing a list of resource
+characteristics and location(s) from which the user or user agent can
+choose the one most appropriate. The entity format is specified by
+the media type given in the Content-Type header field. The origin
+server MUST create the resource before returning the 201 status code.
+If the action cannot be carried out immediately, the server SHOULD
+respond with 202 (Accepted) response instead.</p>
+
+<p>A 201 response MAY contain an ETag response header field indicating
+the current value of the entity tag for the requested variant just
+created, see section 14.19.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '205', 205)" onmouseover="showTip(event, '205', 205)">
+            CREATED s
+          </code>
+          <div class="tip" id="205">
+            <strong>Signature:</strong> s:string -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L183-183" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>201</p>
+
+<p>The request has been fulfilled and resulted in a new resource being
+created. The newly created resource can be referenced by the URI(s)
+returned in the entity of the response, with the most specific URI
+for the resource given by a Location header field. The response
+SHOULD include an entity containing a list of resource
+characteristics and location(s) from which the user or user agent can
+choose the one most appropriate. The entity format is specified by
+the media type given in the Content-Type header field. The origin
+server MUST create the resource before returning the 201 status code.
+If the action cannot be carried out immediately, the server SHOULD
+respond with 202 (Accepted) response instead.</p>
+
+<p>A 201 response MAY contain an ETag response header field indicating
+the current value of the entity tag for the requested variant just
+created, see section 14.19.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '206', 206)" onmouseover="showTip(event, '206', 206)">
+            no_content 
+          </code>
+          <div class="tip" id="206">
+            <strong>Signature:</strong> WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L189-189" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>204</p>
+
+<p>The server has fulfilled the request but does not need to return an
+entity-body, and might want to return updated metainformation. The
+response MAY include new or updated metainformation in the form of
+entity-headers, which if present SHOULD be associated with the
+requested variant.</p>
+
+<p>If the client is a user agent, it SHOULD NOT change its document view
+from that which caused the request to be sent. This response is
+primarily intended to allow input for actions to take place without
+causing a change to the user agent's active document view, although
+any new or updated metainformation SHOULD be applied to the document
+currently in the user agent's active view.</p>
+
+<p>The 204 response MUST NOT include a message-body, and thus is always
+terminated by the first empty line after the header fields.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '207', 207)" onmouseover="showTip(event, '207', 207)">
+            NO_CONTENT 
+          </code>
+          <div class="tip" id="207">
+            <strong>Signature:</strong> WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L192-192" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>204</p>
+
+<p>The server has fulfilled the request but does not need to return an
+entity-body, and might want to return updated metainformation. The
+response MAY include new or updated metainformation in the form of
+entity-headers, which if present SHOULD be associated with the
+requested variant.</p>
+
+<p>If the client is a user agent, it SHOULD NOT change its document view
+from that which caused the request to be sent. This response is
+primarily intended to allow input for actions to take place without
+causing a change to the user agent's active document view, although
+any new or updated metainformation SHOULD be applied to the document
+currently in the user agent's active view.</p>
+
+<p>The 204 response MUST NOT include a message-body, and thus is always
+terminated by the first empty line after the header fields.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '208', 208)" onmouseover="showTip(event, '208', 208)">
+            ok s
+          </code>
+          <div class="tip" id="208">
+            <strong>Signature:</strong> s:byte [] -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L176-176" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>200</p>
+
+<p>Write the bytes to the body as a byte array</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '209', 209)" onmouseover="showTip(event, '209', 209)">
+            OK a
+          </code>
+          <div class="tip" id="209">
+            <strong>Signature:</strong> a:string -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L179-179" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>200</p>
+
+<p>Write the string to the body as UTF-8</p>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="http://suave.io/index.html">
+            <img src="http://suave.io/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">SuaveIO</li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://www.nuget.org/packages/SuaveIO">Get SuaveIO package via NuGet</a></li>
+            <li><a href="http://github.com/SuaveIO/suave">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/CONTRIBUTING.md">Contributing to SuaveIO</a></li>
+            
+            <li class="nav-header">Documentation</li>
+
+            <li><a href="http://suave.io/index.html">Introduction</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature1.html">Feature 1</a></li>
+            <li><a href="http://suave.io/feature2.html">Feature 2</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature3.html">Feature 3</a></li>
+            <li><a href="http://suave.io/feature4.html">Feature 4</a></li>
+
+            <li class="nav-header">Tutorials</li>
+
+            <li><a href="http://suave.io/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="http://suave.io/tutorial2.html">Tutorial 2</a></li>
+
+            <li class="nav-header">Reference</li>
+
+            <li><a href="http://suave.io/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/SuaveIO/suave"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>

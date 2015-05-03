@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>EventSource - SuaveIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Henrik Feldt, Ademar Gonzalez">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="http://suave.io/content/style.css" />
+    <script type="text/javascript" src="http://suave.io/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="http://suave.io/index.html">SuaveIO</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>EventSource</h1>
+<div class="xmldoc">
+<p>A module that implements the Server-Sent Event specification, which can be
+read at www.w3.org/TR/eventsource.</p>
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="suave-http-eventsource-message.html">Message</a>
+          </td>
+          <td class="xmldoc"><p>A container data type for the output events</p>
+</td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '127', 127)" onmouseover="showTip(event, '127', 127)">
+            ( &lt;&lt;. ) out data
+          </code>
+          <div class="tip" id="127">
+            <strong>Signature:</strong> out:Connection -&gt; data:string -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L728-728" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Same as <code>async_write</code>; convenience function.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '128', 128)" onmouseover="showTip(event, '128', 128)">
+            async_write out data
+          </code>
+          <div class="tip" id="128">
+            <strong>Signature:</strong> out:Connection -&gt; data:string -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L725-725" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Helper function that writes a string of data. Most often you are better
+off using the <code>send</code> function and give it a message, as this will ensure
+the proper framing is used. However, if you have a desire to write raw
+data, this function overrides the Socket.async_write function so that
+you will be writing UTF8 data only, as per the specification.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '129', 129)" onmouseover="showTip(event, '129', 129)">
+            comment out cmt
+          </code>
+          <div class="tip" id="129">
+            <strong>Signature:</strong> out:Connection -&gt; cmt:string -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L734-734" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>"If the line starts with a U+003A COLON character (:) - Ignore the line."
+Writes a comment to the stream</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '130', 130)" onmouseover="showTip(event, '130', 130)">
+            data out data
+          </code>
+          <div class="tip" id="130">
+            <strong>Signature:</strong> out:Connection -&gt; data:string -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L740-740" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>"If the field name is 'data' -
+Append the field value to the data buffer, then append a single
+U+000A LINE FEED (LF) character to the data buffer."
+Write a piece of data as part of the event</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '131', 131)" onmouseover="showTip(event, '131', 131)">
+            dispatch out
+          </code>
+          <div class="tip" id="131">
+            <strong>Signature:</strong> out:Connection -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L731-731" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>"If the line is empty (a blank line) - dispatch the event."
+Dispatches the event properly to the browser.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '132', 132)" onmouseover="showTip(event, '132', 132)">
+            es_id out last_event_id
+          </code>
+          <div class="tip" id="132">
+            <strong>Signature:</strong> out:Connection -&gt; last_event_id:string -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L743-743" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>"If the field name is 'id' - Set the last event ID buffer to the field value."
+Sets the last event id in the stream.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '133', 133)" onmouseover="showTip(event, '133', 133)">
+            event_type out event_type
+          </code>
+          <div class="tip" id="133">
+            <strong>Signature:</strong> out:Connection -&gt; event_type:string -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L737-737" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>"If the field name is 'event' - Set the event type buffer to field value."
+Writes the event type to the stream</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '134', 134)" onmouseover="showTip(event, '134', 134)">
+            hand_shake f_cont
+          </code>
+          <div class="tip" id="134">
+            <strong>Signature:</strong> f_cont:(Connection -&gt; SocketOp&lt;unit&gt;) -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L795-795" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '135', 135)" onmouseover="showTip(event, '135', 135)">
+            handShake f_cont
+          </code>
+          <div class="tip" id="135">
+            <strong>Signature:</strong> f_cont:(Connection -&gt; SocketOp&lt;unit&gt;) -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L777-777" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>This function composes the passed function f with the hand-shake required
+to start a new event-stream protocol session with the browser.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '136', 136)" onmouseover="showTip(event, '136', 136)">
+            mk_message id data
+          </code>
+          <div class="tip" id="136">
+            <strong>Signature:</strong> id:string -&gt; data:string -&gt; Message<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L754-754" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '137', 137)" onmouseover="showTip(event, '137', 137)">
+            mk_message&#39; id data typ
+          </code>
+          <div class="tip" id="137">
+            <strong>Signature:</strong> id:string -&gt; data:string -&gt; typ:string -&gt; Message<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L757-757" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '138', 138)" onmouseover="showTip(event, '138', 138)">
+            retry out retry
+          </code>
+          <div class="tip" id="138">
+            <strong>Signature:</strong> out:Connection -&gt; retry:uint32 -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L746-746" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Sets the option for the EventSource instance, of how long to wait in ms
+until a new connection is spawned as a retry.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '139', 139)" onmouseover="showTip(event, '139', 139)">
+            send out msg
+          </code>
+          <div class="tip" id="139">
+            <strong>Signature:</strong> out:Connection -&gt; msg:Message -&gt; SocketOp&lt;unit&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Http.fs#L760-760" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>send a message containing data to the output stream</p>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="http://suave.io/index.html">
+            <img src="http://suave.io/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">SuaveIO</li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://www.nuget.org/packages/SuaveIO">Get SuaveIO package via NuGet</a></li>
+            <li><a href="http://github.com/SuaveIO/suave">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/CONTRIBUTING.md">Contributing to SuaveIO</a></li>
+            
+            <li class="nav-header">Documentation</li>
+
+            <li><a href="http://suave.io/index.html">Introduction</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature1.html">Feature 1</a></li>
+            <li><a href="http://suave.io/feature2.html">Feature 2</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature3.html">Feature 3</a></li>
+            <li><a href="http://suave.io/feature4.html">Feature 4</a></li>
+
+            <li class="nav-header">Tutorials</li>
+
+            <li><a href="http://suave.io/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="http://suave.io/tutorial2.html">Tutorial 2</a></li>
+
+            <li class="nav-header">Reference</li>
+
+            <li><a href="http://suave.io/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/SuaveIO/suave"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>

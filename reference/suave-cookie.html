@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cookie - SuaveIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Henrik Feldt, Ademar Gonzalez">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="http://suave.io/content/style.css" />
+    <script type="text/javascript" src="http://suave.io/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="http://suave.io/index.html">SuaveIO</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Cookie</h1>
+<div class="xmldoc">
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="suave-cookie-cookieerror.html">CookieError</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-cookie-cookielife.html">CookieLife</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-cookie-cookiesstate.html">CookiesState</a>
+          </td>
+          <td class="xmldoc"><p>A DTO structure for passing the right parameters to the XXX_cookies functions
+in this module.</p>
+</td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-cookie-cookiesstatemodule.html">CookiesState</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-cookie-httprequestmodule.html">HttpRequest</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-cookie-httpresultmodule.html">HttpResult</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '46', 46)" onmouseover="showTip(event, '46', 46)">
+            cookie_state (...)
+          </code>
+          <div class="tip" id="46">
+            <strong>Signature:</strong> csctx:CookiesState -&gt; noCookie:(unit -&gt; Choice&lt;byte [],WebPart&gt;) -&gt; decryptionFailure:(SecretboxDecryptionError -&gt; Choice&lt;byte [],WebPart&gt;) -&gt; f_success:WebPart -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L278-278" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '47', 47)" onmouseover="showTip(event, '47', 47)">
+            cookieState (...)
+          </code>
+          <div class="tip" id="47">
+            <strong>Signature:</strong> csctx:CookiesState -&gt; noCookie:(unit -&gt; Choice&lt;byte [],WebPart&gt;) -&gt; decryptionFailure:(SecretboxDecryptionError -&gt; Choice&lt;byte [],WebPart&gt;) -&gt; f_success:WebPart -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L190-190" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '48', 48)" onmouseover="showTip(event, '48', 48)">
+            generate_cookies (...)
+          </code>
+          <div class="tip" id="48">
+            <strong>Signature:</strong> serverKey:ServerKey -&gt; cookieName:string -&gt; relativeExpiry:CookieLife -&gt; secure:bool -&gt; plainData:byte [] -&gt; HttpCookie * HttpCookie<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L266-266" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '49', 49)" onmouseover="showTip(event, '49', 49)">
+            generateCookies (...)
+          </code>
+          <div class="tip" id="49">
+            <strong>Signature:</strong> serverKey:ServerKey -&gt; cookieName:string -&gt; relativeExpiry:CookieLife -&gt; secure:bool -&gt; plainData:byte [] -&gt; HttpCookie * HttpCookie<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L142-142" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Generate one server-side cookie, and another client-side cookie with
+name "${server-side-name}-client"</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '50', 50)" onmouseover="showTip(event, '50', 50)">
+            parse_cookies cookieString
+          </code>
+          <div class="tip" id="50">
+            <strong>Signature:</strong> cookieString:string -&gt; HttpCookie list<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L236-236" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '51', 51)" onmouseover="showTip(event, '51', 51)">
+            parse_result_cookie cookieString
+          </code>
+          <div class="tip" id="51">
+            <strong>Signature:</strong> cookieString:string -&gt; HttpCookie<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L239-239" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '52', 52)" onmouseover="showTip(event, '52', 52)">
+            parseCookies cookieString
+          </code>
+          <div class="tip" id="52">
+            <strong>Signature:</strong> cookieString:string -&gt; HttpCookie list<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L23-23" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Parse the cookie's name and data in the string into a dictionary.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '53', 53)" onmouseover="showTip(event, '53', 53)">
+            parseResultCookie cookieString
+          </code>
+          <div class="tip" id="53">
+            <strong>Signature:</strong> cookieString:string -&gt; HttpCookie<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L30-30" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '54', 54)" onmouseover="showTip(event, '54', 54)">
+            read_cookies key cookieName cookies
+          </code>
+          <div class="tip" id="54">
+            <strong>Signature:</strong> key:ServerKey -&gt; cookieName:string -&gt; cookies:Map&lt;string,HttpCookie&gt; -&gt; Choice&lt;(HttpCookie * byte []),CookieError&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L269-269" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '55', 55)" onmouseover="showTip(event, '55', 55)">
+            readCookies key cookieName cookies
+          </code>
+          <div class="tip" id="55">
+            <strong>Signature:</strong> key:ServerKey -&gt; cookieName:string -&gt; cookies:Map&lt;string,HttpCookie&gt; -&gt; Choice&lt;(HttpCookie * byte []),CookieError&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L153-153" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Tries to read the cookie of the given name from the HttpContext, and
+returns the cookie and its plaintext value if successful.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '56', 56)" onmouseover="showTip(event, '56', 56)">
+            refresh_cookies expiry cookie
+          </code>
+          <div class="tip" id="56">
+            <strong>Signature:</strong> expiry:CookieLife -&gt; cookie:HttpCookie -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L272-272" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '57', 57)" onmouseover="showTip(event, '57', 57)">
+            refreshCookies expiry cookie
+          </code>
+          <div class="tip" id="57">
+            <strong>Signature:</strong> expiry:CookieLife -&gt; cookie:HttpCookie -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L168-168" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Bumps the expiry dates for all the cookies.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '58', 58)" onmouseover="showTip(event, '58', 58)">
+            set_cookie cookie
+          </code>
+          <div class="tip" id="58">
+            <strong>Signature:</strong> cookie:HttpCookie -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L254-254" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '59', 59)" onmouseover="showTip(event, '59', 59)">
+            set_pair httpCookie clientCookie
+          </code>
+          <div class="tip" id="59">
+            <strong>Signature:</strong> httpCookie:HttpCookie -&gt; clientCookie:HttpCookie -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L260-260" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '60', 60)" onmouseover="showTip(event, '60', 60)">
+            setCookie cookie
+          </code>
+          <div class="tip" id="60">
+            <strong>Signature:</strong> cookie:HttpCookie -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L93-93" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '61', 61)" onmouseover="showTip(event, '61', 61)">
+            setPair httpCookie clientCookie
+          </code>
+          <div class="tip" id="61">
+            <strong>Signature:</strong> httpCookie:HttpCookie -&gt; clientCookie:HttpCookie -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L115-115" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Sets the cookies to the HttpResult</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '62', 62)" onmouseover="showTip(event, '62', 62)">
+            unset_cookie name
+          </code>
+          <div class="tip" id="62">
+            <strong>Signature:</strong> name:string -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L257-257" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '63', 63)" onmouseover="showTip(event, '63', 63)">
+            unset_pair httpCookieName
+          </code>
+          <div class="tip" id="63">
+            <strong>Signature:</strong> httpCookieName:string -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L263-263" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '64', 64)" onmouseover="showTip(event, '64', 64)">
+            unsetCookie name
+          </code>
+          <div class="tip" id="64">
+            <strong>Signature:</strong> name:string -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L110-110" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '65', 65)" onmouseover="showTip(event, '65', 65)">
+            unsetPair httpCookieName
+          </code>
+          <div class="tip" id="65">
+            <strong>Signature:</strong> httpCookieName:string -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L122-122" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '66', 66)" onmouseover="showTip(event, '66', 66)">
+            update_cookies csctx f_plain_text
+          </code>
+          <div class="tip" id="66">
+            <strong>Signature:</strong> csctx:CookiesState -&gt; f_plain_text:(byte [] option -&gt; byte []) -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L275-275" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '67', 67)" onmouseover="showTip(event, '67', 67)">
+            updateCookies csctx f_plain_text
+          </code>
+          <div class="tip" id="67">
+            <strong>Signature:</strong> csctx:CookiesState -&gt; f_plain_text:(byte [] option -&gt; byte []) -&gt; WebPart<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L171-171" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3>Type extensions</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Type extension</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '68', 68)" onmouseover="showTip(event, '68', 68)">
+            cookies
+          </code>
+          <div class="tip" id="68">
+            <strong>Signature:</strong> Map&lt;string,HttpCookie&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L54-54" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Finds the cookies of the request, or an empty Map otherwise, if
+there are no cookies.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '69', 69)" onmouseover="showTip(event, '69', 69)">
+            cookies
+          </code>
+          <div class="tip" id="69">
+            <strong>Signature:</strong> Map&lt;string,HttpCookie&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L54-54" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Finds the cookies of the request, or an empty Map otherwise, if
+there are no cookies.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '70', 70)" onmouseover="showTip(event, '70', 70)">
+            cookies
+          </code>
+          <div class="tip" id="70">
+            <strong>Signature:</strong> Map&lt;string,HttpCookie&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L64-64" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '71', 71)" onmouseover="showTip(event, '71', 71)">
+            cookies
+          </code>
+          <div class="tip" id="71">
+            <strong>Signature:</strong> Map&lt;string,HttpCookie&gt;<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave/Cookie.fs#L64-64" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="http://suave.io/index.html">
+            <img src="http://suave.io/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">SuaveIO</li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://www.nuget.org/packages/SuaveIO">Get SuaveIO package via NuGet</a></li>
+            <li><a href="http://github.com/SuaveIO/suave">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/CONTRIBUTING.md">Contributing to SuaveIO</a></li>
+            
+            <li class="nav-header">Documentation</li>
+
+            <li><a href="http://suave.io/index.html">Introduction</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature1.html">Feature 1</a></li>
+            <li><a href="http://suave.io/feature2.html">Feature 2</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature3.html">Feature 3</a></li>
+            <li><a href="http://suave.io/feature4.html">Feature 4</a></li>
+
+            <li class="nav-header">Tutorials</li>
+
+            <li><a href="http://suave.io/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="http://suave.io/tutorial2.html">Tutorial 2</a></li>
+
+            <li class="nav-header">Reference</li>
+
+            <li><a href="http://suave.io/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/SuaveIO/suave"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>

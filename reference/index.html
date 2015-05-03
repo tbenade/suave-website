@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Namespaces - SuaveIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Henrik Feldt, Ademar Gonzalez">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="http://suave.io/content/style.css" />
+    <script type="text/javascript" src="http://suave.io/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="http://suave.io/index.html">SuaveIO</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+<h1>SuaveIO</h1>
+
+
+  <h2>Suave Namespace</h2>
+    <div>
+      <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-asyncsocket.html">AsyncSocket</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-auth.html">Auth</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-compression.html">Compression</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-cookie.html">Cookie</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-globals.html">Globals</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-http.html">Http</a>
+          </td>
+          <td class="xmldoc"><p>The HTTP module has these main sub-modules:
+Response - response and response_f functions.Writers - ways to modify the response.Intermediate - 100 and 101 response codes.Successful- 2xx response codes.Redirection - 3xx response codes.RequestErrors - 4xx response codes.ServerErrors - 5xx response codes.Applicatives - use to filter down the request to something you wantFiles - send files to the clientAuthentication - Methods for authenticating http requestsand these main types:WebResult = Async<unit> optionWebPart = HttpContext -&gt; WebResultHttpMethod</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-json.html">Json</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-logmodule.html">Log</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-model.html">Model</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-proxy.html">Proxy</a>
+          </td>
+          <td class="xmldoc"><p>A module for proxying requests to another computer/ip/port</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-sscanf.html">Sscanf</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-state.html">State</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-tcp.html">Tcp</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-types.html">Types</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-web.html">Web</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-testing.html">Testing</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-razor.html">Razor</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
+  <h2>Suave.Logging Namespace</h2>
+    <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="suave-logging-loglevel.html">LogLevel</a>
+          </td>
+          <td class="xmldoc"><p>The log levels specify the severity of the message.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-logging-logline.html">LogLine</a>
+          </td>
+          <td class="xmldoc"><p>When logging, write a log line like this with the source of your
+log line as well as a message and an optional exception.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-logging-logger.html">Logger</a>
+          </td>
+          <td class="xmldoc"><p>The primary Logger abstraction that you can log data into</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-logging-traceheader.html">TraceHeader</a>
+          </td>
+          <td class="xmldoc"><p>A record that keeps track of what request this is.
+In an uint64 there are 18 446 744 073 709 551 616 number
+of possible values, so you can be fairly certain a given request
+id is unique, given a good random number generator.</p>
+</td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-logging-loglinemodule.html">LogLine</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-logging-loggers.html">Loggers</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
+  <h2>Suave.OpenSSL Namespace</h2>
+    <div>
+      <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-openssl-functions.html">Functions</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-openssl-native.html">Native</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-openssl-provider.html">Provider</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
+  <h2>Suave.Sockets Namespace</h2>
+    <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-asyncusertoken.html">AsyncUserToken</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-buffermanager.html">BufferManager</a>
+          </td>
+          <td class="xmldoc"><p>This class creates a single large buffer which can be divided up
+and assigned to SocketAsyncEventArgs objects for use with each
+socket I/O operation.
+This enables bufffers to be easily reused and guards against
+fragmenting heap memory.</p>
+
+<p>The operations exposed on the BufferManager class are not thread safe.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-connection.html">Connection</a>
+          </td>
+          <td class="xmldoc"><p>A connection (TCP implied) is a thing that can read and write from a socket
+and that can be closed.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-itransport.html">ITransport</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-port.html">Port</a>
+          </td>
+          <td class="xmldoc"><p>A port is an unsigned short (uint16) structure</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-socketasynceventargspool.html">SocketAsyncEventArgsPool</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-socketbinding.html">SocketBinding</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-socketissue.html">SocketIssue</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-socketmonad.html">SocketMonad</a>
+          </td>
+          <td class="xmldoc"><p>Workflow builder to read/write to async sockets with fail/success semantics</p>
+</td>
+        </tr>
+        <tr>
+          <td class="type-name">
+            <a href="suave-sockets-tcptransport.html">TcpTransport</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-sockets-connectionmodule.html">Connection</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-sockets-ipaddress.html">IPAddress</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-sockets-socketbindingmodule.html">SocketBinding</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-sockets-socketmonadmodule.html">SocketMonad</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-sockets-socketutils.html">SocketUtils</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
+  <h2>Suave.Utils Namespace</h2>
+    <div>
+      <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-ascii.html">ASCII</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-async.html">Async</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-bytes.html">Bytes</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-choice.html">Choice</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-collections.html">Collections</a>
+          </td>
+          <td class="xmldoc"><p>A module for composing the applicatives.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-crypto.html">Crypto</a>
+          </td>
+          <td class="xmldoc"><p>Small crypto module that can do HMACs and generate random strings to use
+as keys, as well as create a 'cryptobox'; i.e. a AES256+HMACSHA256 box with
+compressed plaintext contents so that they can be easily stored in cookies.</p>
+</td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-encoding.html">Encoding</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-map.html">Map</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-option.html">Option</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-parsing.html">Parsing</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-randomextensions.html">RandomExtensions</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-string.html">String</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-utils-utf8.html">UTF8</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+    </div>
+
+        </div>
+        <div class="span3">
+          <a href="http://suave.io/index.html">
+            <img src="http://suave.io/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">SuaveIO</li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://www.nuget.org/packages/SuaveIO">Get SuaveIO package via NuGet</a></li>
+            <li><a href="http://github.com/SuaveIO/suave">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/CONTRIBUTING.md">Contributing to SuaveIO</a></li>
+            
+            <li class="nav-header">Documentation</li>
+
+            <li><a href="http://suave.io/index.html">Introduction</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature1.html">Feature 1</a></li>
+            <li><a href="http://suave.io/feature2.html">Feature 2</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature3.html">Feature 3</a></li>
+            <li><a href="http://suave.io/feature4.html">Feature 4</a></li>
+
+            <li class="nav-header">Tutorials</li>
+
+            <li><a href="http://suave.io/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="http://suave.io/tutorial2.html">Tutorial 2</a></li>
+
+            <li class="nav-header">Reference</li>
+
+            <li><a href="http://suave.io/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/SuaveIO/suave"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing - SuaveIO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Henrik Feldt, Ademar Gonzalez">
+
+    <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="http://suave.io/content/style.css" />
+    <script type="text/javascript" src="http://suave.io/content/tips.js"></script>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li><a href="http://fsharp.org">fsharp.org</a></li>
+          <li><a href="http://tpetricek.github.io/FSharp.Formatting/"><img height="16" width="16" src="http://fsharp.org/images/thumbs/FSharp.Formatting.png" /> F# Formatting</a></li>
+        </ul>
+        <h3 class="muted"><a href="http://suave.io/index.html">SuaveIO</a></h3>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="span9" id="main">
+          
+
+
+
+<h1>Testing</h1>
+<div class="xmldoc">
+</div>
+
+<!-- Render nested types and modules, if there are any -->
+  <h2>Nested types and modules</h2>
+  <div>
+      <table class="table table-bordered type-list">
+    <thead>
+      <tr><td>Type</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="type-name">
+            <a href="suave-testing-suavetestctx.html">SuaveTestCtx</a>
+          </td>
+          <td class="xmldoc"><p>This test context is a holder for the runtime values of the web
+server of suave, as well as the cancellation token that is
+threaded throughout the web server and will shut down all
+concurrently running async operations.</p>
+
+<p>When you are done with it, you should call <code>dispose_context</code> to
+cancel the token and dispose the server's runtime artifacts
+(like the listening socket etc).</p>
+</td>
+        </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered module-list">
+    <thead>
+      <tr><td>Module</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td class="module-name">
+            <a href="suave-testing-responsedata.html">ResponseData</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+        <tr>
+          <td class="module-name">
+            <a href="suave-testing-utilities.html">Utilities</a>
+          </td>
+          <td class="xmldoc"></td>
+        </tr>
+    </tbody>
+  </table>
+
+  </div>
+
+  <h3>Functions and values</h3>
+  <table class="table table-bordered member-list">
+    <thead>
+      <tr><td>Function or value</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '321', 321)" onmouseover="showTip(event, '321', 321)">
+            disposeContext ctx
+          </code>
+          <div class="tip" id="321">
+            <strong>Signature:</strong> ctx:SuaveTestCtx -&gt; unit<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L87-87" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Cancels the cancellation token source and disposes the server's
+resources.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '322', 322)" onmouseover="showTip(event, '322', 322)">
+            endpoint_uri suave_config
+          </code>
+          <div class="tip" id="322">
+            <strong>Signature:</strong> suave_config:SuaveConfig -&gt; Uri<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L266-266" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '323', 323)" onmouseover="showTip(event, '323', 323)">
+            endpointUri suaveConfig
+          </code>
+          <div class="tip" id="323">
+            <strong>Signature:</strong> suaveConfig:SuaveConfig -&gt; Uri<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L155-155" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '324', 324)" onmouseover="showTip(event, '324', 324)">
+            mk_client handler
+          </code>
+          <div class="tip" id="324">
+            <strong>Signature:</strong> handler:HttpMessageHandler -&gt; HttpClient<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L262-262" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '325', 325)" onmouseover="showTip(event, '325', 325)">
+            mk_handler decomp_method cookies
+          </code>
+          <div class="tip" id="325">
+            <strong>Signature:</strong> decomp_method:DecompressionMethods -&gt; cookies:&#39;?7359 option -&gt; HttpClientHandler<br />
+                          <strong>Type parameters:</strong> '?7359          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L258-258" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '326', 326)" onmouseover="showTip(event, '326', 326)">
+            mk_request (...)
+          </code>
+          <div class="tip" id="326">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; query:string -&gt; data:&#39;?7357 option -&gt; endpoint:Uri -&gt; HttpRequestMessage<br />
+                          <strong>Type parameters:</strong> '?7357          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L254-254" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '327', 327)" onmouseover="showTip(event, '327', 327)">
+            mkClient handler
+          </code>
+          <div class="tip" id="327">
+            <strong>Signature:</strong> handler:HttpMessageHandler -&gt; HttpClient<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L140-140" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '328', 328)" onmouseover="showTip(event, '328', 328)">
+            mkHandler decomp_method cookies
+          </code>
+          <div class="tip" id="328">
+            <strong>Signature:</strong> decomp_method:DecompressionMethods -&gt; cookies:&#39;?7322 option -&gt; HttpClientHandler<br />
+                          <strong>Type parameters:</strong> '?7322          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L134-134" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Create a new disposable HttpClientHandler</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '329', 329)" onmouseover="showTip(event, '329', 329)">
+            mkRequest (...)
+          </code>
+          <div class="tip" id="329">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; query:string -&gt; data:&#39;?7320 option -&gt; endpoint:Uri -&gt; HttpRequestMessage<br />
+                          <strong>Type parameters:</strong> '?7320          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L123-123" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Create a new HttpRequestMessage towards the endpoint</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '330', 330)" onmouseover="showTip(event, '330', 330)">
+            req methd resource data
+          </code>
+          <div class="tip" id="330">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7330 option -&gt; SuaveTestCtx -&gt; string<br />
+                          <strong>Type parameters:</strong> '?7330          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L192-192" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '331', 331)" onmouseover="showTip(event, '331', 331)">
+            req_bytes methd resource data
+          </code>
+          <div class="tip" id="331">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7367 option -&gt; SuaveTestCtx -&gt; byte []<br />
+                          <strong>Type parameters:</strong> '?7367          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L278-278" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '332', 332)" onmouseover="showTip(event, '332', 332)">
+            req_content_headers methd resource data
+          </code>
+          <div class="tip" id="332">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7379 option -&gt; SuaveTestCtx -&gt; HttpContentHeaders<br />
+                          <strong>Type parameters:</strong> '?7379          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L302-302" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '333', 333)" onmouseover="showTip(event, '333', 333)">
+            req_cookies methd resource data ctx
+          </code>
+          <div class="tip" id="333">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7381 option -&gt; ctx:SuaveTestCtx -&gt; CookieContainer<br />
+                          <strong>Type parameters:</strong> '?7381          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L306-306" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '334', 334)" onmouseover="showTip(event, '334', 334)">
+            req_cookies&#39; methd resource data ctx
+          </code>
+          <div class="tip" id="334">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7383 option -&gt; ctx:SuaveTestCtx -&gt; CookieCollection<br />
+                          <strong>Type parameters:</strong> '?7383          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L310-310" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '335', 335)" onmouseover="showTip(event, '335', 335)">
+            req_deflate methd resource data
+          </code>
+          <div class="tip" id="335">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7371 option -&gt; SuaveTestCtx -&gt; string<br />
+                          <strong>Type parameters:</strong> '?7371          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L286-286" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '336', 336)" onmouseover="showTip(event, '336', 336)">
+            req_deflate_bytes methd resource data
+          </code>
+          <div class="tip" id="336">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7375 option -&gt; SuaveTestCtx -&gt; byte []<br />
+                          <strong>Type parameters:</strong> '?7375          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L294-294" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '337', 337)" onmouseover="showTip(event, '337', 337)">
+            req_gzip methd resource data
+          </code>
+          <div class="tip" id="337">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7369 option -&gt; SuaveTestCtx -&gt; string<br />
+                          <strong>Type parameters:</strong> '?7369          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L282-282" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '338', 338)" onmouseover="showTip(event, '338', 338)">
+            req_gzip_bytes methd resource data
+          </code>
+          <div class="tip" id="338">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7373 option -&gt; SuaveTestCtx -&gt; byte []<br />
+                          <strong>Type parameters:</strong> '?7373          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L290-290" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '339', 339)" onmouseover="showTip(event, '339', 339)">
+            req_headers methd resource data
+          </code>
+          <div class="tip" id="339">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7377 option -&gt; SuaveTestCtx -&gt; HttpResponseHeaders<br />
+                          <strong>Type parameters:</strong> '?7377          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L298-298" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '340', 340)" onmouseover="showTip(event, '340', 340)">
+            req_query methd resource query
+          </code>
+          <div class="tip" id="340">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; query:string -&gt; SuaveTestCtx -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L274-274" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '341', 341)" onmouseover="showTip(event, '341', 341)">
+            req_resp (...)
+          </code>
+          <div class="tip" id="341">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; query:string -&gt; data:&#39;?7363 option -&gt; cookies:CookieContainer option -&gt; decomp_method:DecompressionMethods -&gt; f_request:(HttpRequestMessage -&gt; HttpRequestMessage) -&gt; f_result:(HttpResponseMessage -&gt; &#39;?7364) -&gt; SuaveTestCtx -&gt; &#39;?7364<br />
+                          <strong>Type parameters:</strong> '?7363, '?7364          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L270-270" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '342', 342)" onmouseover="showTip(event, '342', 342)">
+            reqBytes methd resource data
+          </code>
+          <div class="tip" id="342">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7333 option -&gt; SuaveTestCtx -&gt; byte []<br />
+                          <strong>Type parameters:</strong> '?7333          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L198-198" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '343', 343)" onmouseover="showTip(event, '343', 343)">
+            reqContentHeaders methd resource data
+          </code>
+          <div class="tip" id="343">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7345 option -&gt; SuaveTestCtx -&gt; HttpContentHeaders<br />
+                          <strong>Type parameters:</strong> '?7345          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L216-216" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '344', 344)" onmouseover="showTip(event, '344', 344)">
+            reqCookies methd resource data ctx
+          </code>
+          <div class="tip" id="344">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7347 option -&gt; ctx:SuaveTestCtx -&gt; CookieContainer<br />
+                          <strong>Type parameters:</strong> '?7347          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L220-220" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Test a request by looking at the cookies alone.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '345', 345)" onmouseover="showTip(event, '345', 345)">
+            reqCookies&#39; methd resource data ctx
+          </code>
+          <div class="tip" id="345">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7349 option -&gt; ctx:SuaveTestCtx -&gt; CookieCollection<br />
+                          <strong>Type parameters:</strong> '?7349          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L233-233" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Returns the cookie collection for the default binding.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '346', 346)" onmouseover="showTip(event, '346', 346)">
+            reqDeflate methd resource data
+          </code>
+          <div class="tip" id="346">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7337 option -&gt; SuaveTestCtx -&gt; string<br />
+                          <strong>Type parameters:</strong> '?7337          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L204-204" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '347', 347)" onmouseover="showTip(event, '347', 347)">
+            reqDeflateBytes methd resource data
+          </code>
+          <div class="tip" id="347">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7341 option -&gt; SuaveTestCtx -&gt; byte []<br />
+                          <strong>Type parameters:</strong> '?7341          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L210-210" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '348', 348)" onmouseover="showTip(event, '348', 348)">
+            reqGZip methd resource data
+          </code>
+          <div class="tip" id="348">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7335 option -&gt; SuaveTestCtx -&gt; string<br />
+                          <strong>Type parameters:</strong> '?7335          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L201-201" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '349', 349)" onmouseover="showTip(event, '349', 349)">
+            reqGZipBytes methd resource data
+          </code>
+          <div class="tip" id="349">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7339 option -&gt; SuaveTestCtx -&gt; byte []<br />
+                          <strong>Type parameters:</strong> '?7339          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L207-207" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '350', 350)" onmouseover="showTip(event, '350', 350)">
+            reqHeaders methd resource data
+          </code>
+          <div class="tip" id="350">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; data:&#39;?7343 option -&gt; SuaveTestCtx -&gt; HttpResponseHeaders<br />
+                          <strong>Type parameters:</strong> '?7343          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L213-213" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '351', 351)" onmouseover="showTip(event, '351', 351)">
+            reqQuery methd resource query
+          </code>
+          <div class="tip" id="351">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; query:string -&gt; SuaveTestCtx -&gt; string<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L195-195" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '352', 352)" onmouseover="showTip(event, '352', 352)">
+            reqResp (...)
+          </code>
+          <div class="tip" id="352">
+            <strong>Signature:</strong> methd:HttpMethod -&gt; resource:string -&gt; query:string -&gt; data:&#39;?7327 option -&gt; cookies:CookieContainer option -&gt; decompMethod:DecompressionMethods -&gt; f_request:(HttpRequestMessage -&gt; HttpRequestMessage) -&gt; f_result:(HttpResponseMessage -&gt; &#39;?7328) -&gt; SuaveTestCtx -&gt; &#39;?7328<br />
+                          <strong>Type parameters:</strong> '?7327, '?7328          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L173-173" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>This is the main function for the testing library; it lets you assert
+on the request/response values while ensuring deterministic
+disposal of suave.</p>
+
+<p>Currently, it:</p>
+
+<ul>
+<li>doesn't automatically follow 301 FOUND redirects (nor 302, 307) to
+ensure you can assert on redirects.</li>
+<li>only requests to the very first binding your web server has in use</li>
+<li>only sets a HttpContent if you have given a value to the <code>data</code>
+parameter.</li>
+<li>waits 5000 ms for a reply, then breaks into the debugger if you're
+attached, otherwise asserts a failure of the timeout</li>
+<li>calls <code>f_result</code> with the HttpResponseMessage</li>
+</ul>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '353', 353)" onmouseover="showTip(event, '353', 353)">
+            run_with config webParts
+          </code>
+          <div class="tip" id="353">
+            <strong>Signature:</strong> config:SuaveConfig -&gt; webParts:WebPart -&gt; SuaveTestCtx<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L246-246" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '354', 354)" onmouseover="showTip(event, '354', 354)">
+            run_with_factory factory config webParts
+          </code>
+          <div class="tip" id="354">
+            <strong>Signature:</strong> factory:(SuaveConfig -&gt; &#39;?7351 -&gt; Async&lt;&#39;?7352&gt; * Async&lt;unit&gt;) -&gt; config:SuaveConfig -&gt; webParts:&#39;?7351 -&gt; SuaveTestCtx<br />
+                          <strong>Type parameters:</strong> '?7351, '?7352          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L242-242" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '355', 355)" onmouseover="showTip(event, '355', 355)">
+            runWith config webParts
+          </code>
+          <div class="tip" id="355">
+            <strong>Signature:</strong> config:SuaveConfig -&gt; webParts:WebPart -&gt; SuaveTestCtx<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L114-114" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Similar to run<em>with</em>factory, but uses the default suave factory.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '356', 356)" onmouseover="showTip(event, '356', 356)">
+            runWithFactory factory config webParts
+          </code>
+          <div class="tip" id="356">
+            <strong>Signature:</strong> factory:(SuaveConfig -&gt; &#39;?7314 -&gt; Async&lt;&#39;?7315&gt; * Async&lt;unit&gt;) -&gt; config:SuaveConfig -&gt; webParts:&#39;?7314 -&gt; SuaveTestCtx<br />
+                          <strong>Type parameters:</strong> '?7314, '?7315          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L100-100" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Create a new test context from a factory that starts the web
+server, such as <code>web_server_async</code> from <code>Suave.Web</code>. Also pass
+in a <code>SuaveConfig</code> value and the web parts you'd like to test.</p>
+
+<p>The factory needs to start two async's, one which this function
+can block on (listening) and another (server) which is the actual
+async value of the running server. The listening async value will
+be awaited inside this function but the server async value will
+be run on the thread pool.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '357', 357)" onmouseover="showTip(event, '357', 357)">
+            send client timeout ctx request
+          </code>
+          <div class="tip" id="357">
+            <strong>Signature:</strong> client:HttpClient -&gt; timeout:TimeSpan -&gt; ctx:SuaveTestCtx -&gt; request:HttpRequestMessage -&gt; HttpResponseMessage<br />
+                      </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L144-144" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Send the request with the client - returning the result of the request</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '358', 358)" onmouseover="showTip(event, '358', 358)">
+            with_context f ctx
+          </code>
+          <div class="tip" id="358">
+            <strong>Signature:</strong> f:(SuaveTestCtx -&gt; &#39;?7355) -&gt; ctx:SuaveTestCtx -&gt; &#39;?7355<br />
+                          <strong>Type parameters:</strong> '?7355          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L250-250" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Obsolete</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '359', 359)" onmouseover="showTip(event, '359', 359)">
+            withContext f ctx
+          </code>
+          <div class="tip" id="359">
+            <strong>Signature:</strong> f:(SuaveTestCtx -&gt; &#39;?7318) -&gt; ctx:SuaveTestCtx -&gt; &#39;?7318<br />
+                          <strong>Type parameters:</strong> '?7318          </div>
+        </td>
+        <td class="xmldoc">
+            <a href="http://github.com/SuaveIO/suave/tree/master/src/Suave.Testing/Testing.fs#L117-117" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Ensures the context is disposed after 'f ctx' is called.</p>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+        </div>
+        <div class="span3">
+          <a href="http://suave.io/index.html">
+            <img src="http://suave.io/images/logo.png" style="width:140px;height:140px;margin:10px 0px 0px 35px;border-style:none;" />
+          </a>
+
+          <ul class="nav nav-list" id="menu">
+
+            <li class="nav-header">SuaveIO</li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://www.nuget.org/packages/SuaveIO">Get SuaveIO package via NuGet</a></li>
+            <li><a href="http://github.com/SuaveIO/suave">Source Code on GitHub</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/LICENSE.md">License (Apache 2.0)</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/RELEASE_NOTES.md">Release Notes</a></li>
+            <li><a href="http://github.com/SuaveIO/suave/blob/master/CONTRIBUTING.md">Contributing to SuaveIO</a></li>
+            
+            <li class="nav-header">Documentation</li>
+
+            <li><a href="http://suave.io/index.html">Introduction</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature1.html">Feature 1</a></li>
+            <li><a href="http://suave.io/feature2.html">Feature 2</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="http://suave.io/feature3.html">Feature 3</a></li>
+            <li><a href="http://suave.io/feature4.html">Feature 4</a></li>
+
+            <li class="nav-header">Tutorials</li>
+
+            <li><a href="http://suave.io/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="http://suave.io/tutorial2.html">Tutorial 2</a></li>
+
+            <li class="nav-header">Reference</li>
+
+            <li><a href="http://suave.io/reference/index.html">API Reference</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <a href="http://github.com/SuaveIO/suave"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+  </body>
+  </html>
