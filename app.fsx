@@ -37,6 +37,7 @@ let config =
 
 let app : WebPart = 
     choose [
+       pathRegex "(.*?)\.(dll|mdb|log)$" >>= FORBIDDEN "Access denied.";
        GET >>= choose [ path "/" >>= file "index.html"; browseHome ];
        NOT_FOUND "Found no handlers." 
     ] >>= log logger logFormat
